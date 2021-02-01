@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Check Availability Set Exists Request
 class TestCheckAvailabilitySetExists < Minitest::Test
   def setup
-    @service = Fog::Compute::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Compute.new(credentials)
     @client = @service.instance_variable_get(:@compute_mgmt_client)
     @availability_sets = @client.availability_sets
   end

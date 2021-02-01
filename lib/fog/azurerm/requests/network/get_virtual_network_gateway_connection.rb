@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Virtual Network Gateway Connection Request
       class Real
         def get_virtual_network_gateway_connection(resource_group_name, gateway_connection_name)

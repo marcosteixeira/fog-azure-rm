@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def delete_load_balancer(resource_group, name)

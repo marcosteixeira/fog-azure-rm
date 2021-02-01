@@ -1,6 +1,6 @@
 module Fog
-  module Storage
-    class AzureRM
+  module AzureRM
+    class Storage
       # This class provides the actual implementation for service calls.
       # https://msdn.microsoft.com/en-us/library/azure/dd179352.aspx
       class Real

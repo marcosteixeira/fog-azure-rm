@@ -14,7 +14,7 @@ require 'fog/azurerm'
 Next, create a connection to the Network Service:
 
 ```ruby
-fog_network_service = Fog::Network::AzureRM.new(
+fog_network_service = Fog::AzureRM::Network.new(
         tenant_id: '<Tenant Id>',                                                             # Tenant Id of Azure Active Directory Application
         client_id:    '<Client Id>',                                                          # Client Id of Azure Active Directory Application
         client_secret: '<Client Secret>',                                                     # Client Secret of Azure Active Directory Application

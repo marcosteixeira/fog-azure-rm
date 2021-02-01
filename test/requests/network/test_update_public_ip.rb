@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test Class for Update Public IP Request
 class TestUpdatePublicIp < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     network_client = @service.instance_variable_get(:@network_client)
     @public_ips = network_client.public_ipaddresses
     @response = ApiStub::Requests::Network::PublicIp.create_public_ip_response(network_client)

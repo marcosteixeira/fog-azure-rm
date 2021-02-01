@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # This class provides the actual implementation for service calls.
       class Real
         def check_network_interface_exists(resource_group_name, nic_name)

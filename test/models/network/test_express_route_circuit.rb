@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for ExpressRouteCircuit Model
 class TestExpressRouteCircuit < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     @circuit = express_route_circuit(@service)
     @network_client = @service.instance_variable_get(:@network_client)
   end
@@ -40,7 +40,7 @@ class TestExpressRouteCircuit < Minitest::Test
   def test_save_method_response
     response = ApiStub::Models::Network::ExpressRouteCircuit.create_express_route_circuit_response(@network_client)
     @service.stub :create_or_update_express_route_circuit, response do
-      assert_instance_of Fog::Network::AzureRM::ExpressRouteCircuit, @circuit.save
+      assert_instance_of Fog::AzureRM::Network::ExpressRouteCircuit, @circuit.save
     end
   end
 

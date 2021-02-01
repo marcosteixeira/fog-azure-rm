@@ -1,6 +1,6 @@
 module Fog
-  module KeyVault
-    class AzureRM
+  module AzureRM
+    class KeyVault
       # This class provides the actual implementation for service calls.
       class Real
         def create_or_update_vault(vault_hash)

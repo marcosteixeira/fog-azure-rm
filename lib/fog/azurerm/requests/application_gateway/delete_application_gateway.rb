@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # Real class for Application Gateway Request
       class Real
         def delete_application_gateway(resource_group, name)

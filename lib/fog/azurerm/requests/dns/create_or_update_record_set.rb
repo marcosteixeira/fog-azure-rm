@@ -1,6 +1,6 @@
 module Fog
-  module DNS
-    class AzureRM
+  module AzureRM
+    class DNS
       # Real class for DNS Request
       class Real
         def create_or_update_record_set(record_set_params, type)

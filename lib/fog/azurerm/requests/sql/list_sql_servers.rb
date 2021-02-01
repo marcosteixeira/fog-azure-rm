@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Real class for Sql Server Request
       class Real
         def list_sql_servers(resource_group)

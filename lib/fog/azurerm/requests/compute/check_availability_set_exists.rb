@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class provides the actual implementation for service calls.
       class Real
         def check_availability_set_exists(resource_group, name)

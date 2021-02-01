@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # This class provides the actual implementation for service calls.
       class Real
         def check_express_route_cir_auth_exists(resource_group_name, circuit_name, authorization_name)

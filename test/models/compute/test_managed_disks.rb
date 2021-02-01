@@ -3,8 +3,8 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Managed Disk Collection
 class TestManagedDisks < Minitest::Test
   def setup
-    @service = Fog::Compute::AzureRM.new(credentials)
-    @managed_disks = Fog::Compute::AzureRM::ManagedDisks.new(resource_group: 'fog-test-rg', service: @service)
+    @service = Fog::AzureRM::Compute.new(credentials)
+    @managed_disks = Fog::AzureRM::Compute::ManagedDisks.new(resource_group: 'fog-test-rg', service: @service)
     @client = @service.instance_variable_get(:@compute_mgmt_client)
     @managed_disk_list = [ApiStub::Models::Compute::ManagedDisk.create_managed_disk_response(@client)]
     @managed_disk = ApiStub::Models::Compute::ManagedDisk.create_managed_disk_response(@client)
@@ -27,17 +27,17 @@ class TestManagedDisks < Minitest::Test
 
   def test_all_method_response
     @service.stub :list_managed_disks_by_rg, @managed_disk_list do
-      assert_instance_of Fog::Compute::AzureRM::ManagedDisks, @managed_disks.all
+      assert_instance_of Fog::AzureRM::Compute::ManagedDisks, @managed_disks.all
       assert @managed_disks.all.size >= 1
       @managed_disks.all.each do |disk|
-        assert_instance_of Fog::Compute::AzureRM::ManagedDisk, disk
+        assert_instance_of Fog::AzureRM::Compute::ManagedDisk, disk
       end
     end
   end
 
   def test_get_method_response
     @service.stub :get_managed_disk, @managed_disk do
-      assert_instance_of Fog::Compute::AzureRM::ManagedDisk, @managed_disks.get('fog-test-rg', 'fog-test-managed_disk')
+      assert_instance_of Fog::AzureRM::Compute::ManagedDisk, @managed_disks.get('fog-test-rg', 'fog-test-managed_disk')
     end
   end
 

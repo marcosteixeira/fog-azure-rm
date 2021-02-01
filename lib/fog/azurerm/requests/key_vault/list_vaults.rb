@@ -1,6 +1,6 @@
 module Fog
-  module KeyVault
-    class AzureRM
+  module AzureRM
+    class KeyVault
       # Real class for KeyVault Request
       class Real
         def list_vaults(resource_group)

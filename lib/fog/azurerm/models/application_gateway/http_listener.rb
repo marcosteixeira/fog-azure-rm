@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # Http Listener class for Application Gateway Service
       class HttpListener < Fog::Model
         identity :name

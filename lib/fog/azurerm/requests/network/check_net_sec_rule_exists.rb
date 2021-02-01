@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # This class provides the actual implementation for service calls.
       class Real
         def check_net_sec_rule_exists(resource_group_name, network_security_group_name, security_rule_name)

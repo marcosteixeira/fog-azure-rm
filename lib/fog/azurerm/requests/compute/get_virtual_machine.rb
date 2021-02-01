@@ -1,8 +1,8 @@
 INSTANCE_VIEW = 'instanceView'.freeze
 
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class provides the actual implementation for service calls.
       class Real
         def get_virtual_machine(resource_group, name, async)

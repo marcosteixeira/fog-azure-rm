@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Create Vault Request
 class TestCreateOrUpdateVault < Minitest::Test
   def setup
-    @service = Fog::KeyVault::AzureRM.new(credentials)
+    @service = Fog::AzureRM::KeyVault.new(credentials)
     key_vault_client = @service.instance_variable_get(:@key_vault_client)
     @vaults = key_vault_client.vaults
     @response = ApiStub::Requests::KeyVault::Vault.create_vault_response(key_vault_client)

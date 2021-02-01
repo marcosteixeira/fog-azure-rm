@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def get_subnet(resource_group, virtual_network_name, subnet_name)

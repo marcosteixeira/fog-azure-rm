@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class provides the actual implementation for service calls.
       class Real
         def detach_data_disk_from_vm(resource_group, vm_name, disk_name, async)

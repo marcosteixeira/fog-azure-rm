@@ -1,7 +1,7 @@
 module Fog
-  module Credentials
+  module AzureRM
     # This class is managing credentials token
-    class AzureRM
+    class Credentials
       def self.get_credentials(tenant_id, client_id, client_secret, environment = ENVIRONMENT_AZURE_CLOUD)
         if @credentials.nil? || new_management_credential?(tenant_id, client_id, client_secret, environment)
           get_new_credentials(tenant_id, client_id, client_secret, environment)

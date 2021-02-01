@@ -1,9 +1,9 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # LoadBalancers collection class for Network Service
       class LoadBalancers < Fog::Collection
-        model Fog::Network::AzureRM::LoadBalancer
+        model Fog::AzureRM::Network::LoadBalancer
         attribute :resource_group
 
         def all
@@ -16,15 +16,15 @@ module Fog
           end
 
           l_balancers.each do |load_balancer|
-            load_balancers << Fog::Network::AzureRM::LoadBalancer.parse(load_balancer)
+            load_balancers << Fog::AzureRM::Network::LoadBalancer.parse(load_balancer)
           end
           load(load_balancers)
         end
 
         def get(resource_group_name, load_balancer_name)
           load_balancer = service.get_load_balancer(resource_group_name, load_balancer_name)
-          load_balancer_fog = Fog::Network::AzureRM::LoadBalancer.new(service: service)
-          load_balancer_fog.merge_attributes(Fog::Network::AzureRM::LoadBalancer.parse(load_balancer))
+          load_balancer_fog = Fog::AzureRM::Network::LoadBalancer.new(service: service)
+          load_balancer_fog.merge_attributes(Fog::AzureRM::Network::LoadBalancer.parse(load_balancer))
         end
 
         def check_load_balancer_exists(resource_group_name, load_balancer_name)

@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # Real class for Compute Request
       class Real
         def create_or_update_managed_disk(managed_disk_params)

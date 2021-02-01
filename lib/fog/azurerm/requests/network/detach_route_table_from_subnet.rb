@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def detach_route_table_from_subnet(resource_group, subnet_name, virtual_network_name, address_prefix, network_security_group_id)

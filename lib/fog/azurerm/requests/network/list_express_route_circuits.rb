@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def list_express_route_circuits(resource_group_name)

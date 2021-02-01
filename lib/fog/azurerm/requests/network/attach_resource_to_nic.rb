@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def attach_resource_to_nic(resource_group_name, nic_name, resource_type, resource_id)

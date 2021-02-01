@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # Real class for Compute Request
       class Real
         def get_image(resource_group_name, image_name)

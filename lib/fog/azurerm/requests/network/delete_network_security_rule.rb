@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def delete_network_security_rule(resource_group, network_security_group_name, security_rule_name)

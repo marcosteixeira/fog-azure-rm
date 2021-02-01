@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Interface Request
       class Real
         def get_network_interface(resource_group_name, nic_name)

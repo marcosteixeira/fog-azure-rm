@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # This class provides the actual implementation for service calls.
       class Real
         def check_ag_exists(resource_group_name, application_gateway_name)

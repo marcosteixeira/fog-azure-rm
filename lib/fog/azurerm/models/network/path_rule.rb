@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Path Rule model class for Network Service
       class PathRule < Fog::Model
         attribute :paths

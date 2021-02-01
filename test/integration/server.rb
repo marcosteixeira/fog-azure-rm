@@ -8,28 +8,28 @@ require 'yaml'
 
 azure_credentials = YAML.load_file(File.expand_path('credentials/azure.yml', __dir__))
 
-rs = Fog::Resources::AzureRM.new(
+rs = Fog::AzureRM::Resources.new(
   tenant_id: azure_credentials['tenant_id'],
   client_id: azure_credentials['client_id'],
   client_secret: azure_credentials['client_secret'],
   subscription_id: azure_credentials['subscription_id']
 )
 
-compute = Fog::Compute::AzureRM.new(
+compute = Fog::AzureRM::Compute.new(
   tenant_id: azure_credentials['tenant_id'],
   client_id: azure_credentials['client_id'],
   client_secret: azure_credentials['client_secret'],
   subscription_id: azure_credentials['subscription_id']
 )
 
-storage = Fog::Storage::AzureRM.new(
+storage = Fog::AzureRM::Storage.new(
   tenant_id: azure_credentials['tenant_id'],
   client_id: azure_credentials['client_id'],
   client_secret: azure_credentials['client_secret'],
   subscription_id: azure_credentials['subscription_id']
 )
 
-network = Fog::Network::AzureRM.new(
+network = Fog::AzureRM::Network.new(
   tenant_id: azure_credentials['tenant_id'],
   client_id: azure_credentials['client_id'],
   client_secret: azure_credentials['client_secret'],
@@ -216,7 +216,7 @@ begin
 
   access_key = storage_account.get_access_keys[0].value
   Fog::Logger.debug access_key.inspect
-  storage_data = Fog::Storage::AzureRM.new(
+  storage_data = Fog::AzureRM::Storage.new(
     azure_storage_account_name: storage_account.name,
     azure_storage_access_key: access_key
   )

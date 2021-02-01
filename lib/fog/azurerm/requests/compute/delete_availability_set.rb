@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class provides the actual implementation for service calls.
       class Real
         def delete_availability_set(resource_group, name)

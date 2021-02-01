@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Express Route Service Provider model class for Network Service
       class ExpressRouteServiceProvider < Fog::Model
         identity :name

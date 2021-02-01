@@ -1,6 +1,6 @@
 module Fog
-  module TrafficManager
-    class AzureRM
+  module AzureRM
+    class TrafficManager
       # Real class for Traffic Manager Request
       class Real
         def create_or_update_traffic_manager_endpoint(endpoint_hash)

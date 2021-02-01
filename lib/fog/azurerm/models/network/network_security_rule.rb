@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Security Rule model for Network Service
       class NetworkSecurityRule < Fog::Model
         identity :name
@@ -38,7 +38,7 @@ module Fog
         def save
           requires :name, :network_security_group_name, :resource_group, :protocol, :source_port_range, :destination_port_range, :source_address_prefix, :destination_address_prefix, :access, :priority, :direction
           network_security_rule = service.create_or_update_network_security_rule(security_rule_params)
-          merge_attributes(Fog::Network::AzureRM::NetworkSecurityRule.parse(network_security_rule))
+          merge_attributes(Fog::AzureRM::Network::NetworkSecurityRule.parse(network_security_rule))
         end
 
         def security_rule_params

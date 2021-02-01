@@ -1,6 +1,6 @@
 module Fog
-  module DNS
-    class AzureRM
+  module AzureRM
+    class DNS
       # This class provides the actual implementation for service calls.
       class Real
         def check_record_set_exists(resource_group, name, zone_name, record_type)

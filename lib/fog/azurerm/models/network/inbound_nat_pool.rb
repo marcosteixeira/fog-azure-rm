@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # InboundNatPool model for Network Service
       class InboundNatPool < Fog::Model
         identity :name

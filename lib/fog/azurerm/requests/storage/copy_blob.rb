@@ -1,6 +1,6 @@
 module Fog
-  module Storage
-    class AzureRM
+  module AzureRM
+    class Storage
       # This class provides the actual implementation for service calls.
       class Real
         def copy_blob(destination_container, destination_blob, source_container, source_blob, options = {})
@@ -17,11 +17,19 @@ module Fog
           Fog::Logger.debug "Copying blob: x-ms-copy-id: #{copy_id}, x-ms-copy-status: #{copy_status}"
           [copy_id, copy_status]
         end
+
+        def copy_object(source_container, source_blob, target_container, target_blob, options = {})
+          copy_blob(target_container, target_blob, source_container, source_blob, options)
+        end
       end
 
       # This class provides the mock implementation for unit tests.
       class Mock
         def copy_blob(*)
+          %w(abc123 pending)
+        end
+
+        def copy_object(*)
           %w(abc123 pending)
         end
       end

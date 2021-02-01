@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # Real class for Compute Request
       class Real
         def check_managed_disk_exists(resource_group_name, disk_name)

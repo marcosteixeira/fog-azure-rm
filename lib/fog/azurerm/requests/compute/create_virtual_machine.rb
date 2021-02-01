@@ -3,8 +3,8 @@ require 'base64'
 WHITE_SPACE = ' '.freeze
 
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class provides the actual implementation for service calls.
       class Real
         def create_virtual_machine(vm_config, async = false)
@@ -292,7 +292,7 @@ module Fog
             end
 
             access_key = storage_account.get_access_keys.first.value
-            storage_data = Fog::Storage::AzureRM.new(azure_storage_account_name: storage_account_name, azure_storage_access_key: access_key)
+            storage_data = Fog::AzureRM::Storage.new(azure_storage_account_name: storage_account_name, azure_storage_access_key: access_key)
             new_time = current_time
             container_name = "customvhd-#{vm_name.downcase}-os-image"
             blob_name = "vhd_image#{new_time}.vhd"

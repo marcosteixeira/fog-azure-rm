@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # FrontendIPConfiguration model for Network Service
       class FrontendIPConfiguration < Fog::Model
         identity :name

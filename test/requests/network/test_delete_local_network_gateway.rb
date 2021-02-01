@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Delete Local Network Gateway Request
 class TestDeleteLocalNetworkGateway < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     network_client = @service.instance_variable_get(:@network_client)
     @local_network_gateways = network_client.local_network_gateways
   end

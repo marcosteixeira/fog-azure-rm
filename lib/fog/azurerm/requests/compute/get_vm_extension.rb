@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # Real class for Compute Request
       class Real
         def get_vm_extension(resource_group_name, virtual_machine_name, vm_extension_name)

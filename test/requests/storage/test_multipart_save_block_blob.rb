@@ -5,11 +5,11 @@ class TestMultipartSaveBlockBlob < Minitest::Test
   # This class posesses the test cases for the requests of saving storage block blob with multiple parts.
   def setup
     Fog.mock!
-    @mock_service = Fog::Storage::AzureRM.new(storage_account_credentials)
+    @mock_service = Fog::AzureRM::Storage.new(storage_account_credentials)
     Fog.unmock!
     @mocked_response = mocked_storage_http_error
 
-    @service = Fog::Storage::AzureRM.new(storage_account_credentials)
+    @service = Fog::AzureRM::Storage.new(storage_account_credentials)
   end
 
   def test_multipart_save_block_blob_success

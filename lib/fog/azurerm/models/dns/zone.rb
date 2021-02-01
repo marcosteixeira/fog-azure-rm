@@ -1,6 +1,6 @@
 module Fog
-  module DNS
-    class AzureRM
+  module AzureRM
+    class DNS
       # This class is giving implementation of create/save and
       # delete/destroy for Zone.
       class Zone < Fog::Model
@@ -31,7 +31,7 @@ module Fog
         def save
           requires :name, :resource_group, :location
           zone = service.create_or_update_zone(zone_params)
-          merge_attributes(Fog::DNS::AzureRM::Zone.parse(zone))
+          merge_attributes(Fog::AzureRM::DNS::Zone.parse(zone))
         end
 
         def destroy

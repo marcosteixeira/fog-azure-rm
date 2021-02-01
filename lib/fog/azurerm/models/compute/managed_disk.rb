@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class is giving implementation of create/save and
       # delete/destroy for Managed Disk.
       class ManagedDisk < Fog::Model
@@ -23,13 +23,13 @@ module Fog
           disk = get_hash_from_object(managed_disk)
 
           unless managed_disk.creation_data.nil?
-            creation_data = Fog::Compute::AzureRM::CreationData.new
-            disk['creation_data'] = creation_data.merge_attributes(Fog::Compute::AzureRM::CreationData.parse(managed_disk.creation_data))
+            creation_data = Fog::AzureRM::Compute::CreationData.new
+            disk['creation_data'] = creation_data.merge_attributes(Fog::AzureRM::Compute::CreationData.parse(managed_disk.creation_data))
           end
 
           unless managed_disk.encryption_settings.nil?
-            encryption_settings = Fog::Compute::AzureRM::EncryptionSettings.new
-            disk['encryption_settings'] = encryption_settings.merge_attributes(Fog::Compute::AzureRM::EncryptionSettings.parse(managed_disk.encryption_settings))
+            encryption_settings = Fog::AzureRM::Compute::EncryptionSettings.new
+            disk['encryption_settings'] = encryption_settings.merge_attributes(Fog::AzureRM::Compute::EncryptionSettings.parse(managed_disk.encryption_settings))
           end
 
           disk['resource_group_name'] = get_resource_group_from_id(managed_disk.id)
@@ -43,7 +43,7 @@ module Fog
           validate_creation_data_params(creation_data)
 
           disk = service.create_or_update_managed_disk(managed_disk_params)
-          merge_attributes(Fog::Compute::AzureRM::ManagedDisk.parse(disk))
+          merge_attributes(Fog::AzureRM::Compute::ManagedDisk.parse(disk))
         end
 
         def destroy(async = false)
@@ -75,7 +75,7 @@ module Fog
         end
 
         def create_fog_async_response(response, delete_extra_resource = false)
-          disk = Fog::Compute::AzureRM::ManagedDisk.new(service: service)
+          disk = Fog::AzureRM::Compute::ManagedDisk.new(service: service)
           Fog::AzureRM::AsyncResponse.new(disk, response, delete_extra_resource)
         end
       end

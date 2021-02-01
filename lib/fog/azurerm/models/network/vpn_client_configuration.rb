@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Vpn Client Configuration model class for Network Service
       class VpnClientConfiguration < Fog::Model
         attribute :address_pool
@@ -16,14 +16,14 @@ module Fog
 
           hash['root_certificates'] = []
           vpn_client_config.vpn_client_root_certificates.each do |root_cert|
-            root_certificate = Fog::Network::AzureRM::VpnClientRootCertificate.new
-            hash['root_certificates'] << root_certificate.merge_attributes(Fog::Network::AzureRM::VpnClientRootCertificate.parse(root_cert))
+            root_certificate = Fog::AzureRM::Network::VpnClientRootCertificate.new
+            hash['root_certificates'] << root_certificate.merge_attributes(Fog::AzureRM::Network::VpnClientRootCertificate.parse(root_cert))
           end unless vpn_client_config.vpn_client_root_certificates.nil?
 
           hash['revoked_certificates'] = []
           vpn_client_config.vpn_client_revoked_certificates.each do |revoked_cert|
-            revoked_certificate = Fog::Network::AzureRM::VpnClientRevokedCertificate.new
-            hash['revoked_certificates'] << revoked_certificate.merge_attributes(Fog::Network::AzureRM::VpnClientRevokedCertificate.parse(revoked_cert))
+            revoked_certificate = Fog::AzureRM::Network::VpnClientRevokedCertificate.new
+            hash['revoked_certificates'] << revoked_certificate.merge_attributes(Fog::AzureRM::Network::VpnClientRevokedCertificate.parse(revoked_cert))
           end unless vpn_client_config.vpn_client_revoked_certificates.nil?
 
           hash

@@ -76,7 +76,7 @@ def mocked_storage_http_not_found_error
 end
 
 def server(service)
-  Fog::Compute::AzureRM::Server.new(
+  Fog::AzureRM::Compute::Server.new(
     name: 'fog-test-server',
     location: 'West US',
     resource_group: 'fog-test-rg',
@@ -96,7 +96,7 @@ def server(service)
 end
 
 def virtual_machine_extension(service)
-  Fog::Compute::AzureRM::VirtualMachineExtension.new(
+  Fog::AzureRM::Compute::VirtualMachineExtension.new(
     name: 'fog-test-extension',
     location: 'West US',
     resource_group: 'fog-test-rg',
@@ -112,7 +112,7 @@ def virtual_machine_extension(service)
 end
 
 def availability_set(service)
-  Fog::Compute::AzureRM::AvailabilitySet.new(
+  Fog::AzureRM::Compute::AvailabilitySet.new(
     name: 'availability-set',
     location: 'West US',
     resource_group: 'fog-test-rg',
@@ -123,7 +123,7 @@ def availability_set(service)
 end
 
 def resource_group(service)
-  Fog::Resources::AzureRM::ResourceGroup.new(
+  Fog::AzureRM::Resources::ResourceGroup.new(
     name: 'fog-test-rg',
     location: 'West US',
     service: service
@@ -131,7 +131,7 @@ def resource_group(service)
 end
 
 def deployment(service)
-  Fog::Resources::AzureRM::Deployment.new(
+  Fog::AzureRM::Resources::Deployment.new(
     name: 'fog-test-deployment',
     resource_group: 'fog-test-rg',
     template_link: 'https://test.com/template.json',
@@ -141,7 +141,7 @@ def deployment(service)
 end
 
 def storage_account(service)
-  Fog::Storage::AzureRM::StorageAccount.new(
+  Fog::AzureRM::Storage::StorageAccount.new(
     name: 'storage-account',
     location: 'West US',
     resource_group: 'fog-test-rg',
@@ -150,7 +150,7 @@ def storage_account(service)
 end
 
 def standard_lrs(service)
-  Fog::Storage::AzureRM::StorageAccount.new(
+  Fog::AzureRM::Storage::StorageAccount.new(
     name: 'storage-account',
     location: 'West US',
     resource_group: 'fog-test-rg',
@@ -161,7 +161,7 @@ def standard_lrs(service)
 end
 
 def standard_check_for_invalid_replications(service)
-  Fog::Storage::AzureRM::StorageAccount.new(
+  Fog::AzureRM::Storage::StorageAccount.new(
     name: 'storage-account',
     location: 'West US',
     resource_group: 'fog-test-rg',
@@ -172,7 +172,7 @@ def standard_check_for_invalid_replications(service)
 end
 
 def premium_check_for_invalid_replications(service)
-  Fog::Storage::AzureRM::StorageAccount.new(
+  Fog::AzureRM::Storage::StorageAccount.new(
     name: 'storage-account',
     location: 'West US',
     resource_group: 'fog-test-rg',
@@ -183,7 +183,7 @@ def premium_check_for_invalid_replications(service)
 end
 
 def directory(service)
-  Fog::Storage::AzureRM::Directory.new(
+  Fog::AzureRM::Storage::Directory.new(
     key: 'test_container',
     acl: 'container',
     etag: '0x8D29C92176C8352',
@@ -196,12 +196,12 @@ def directory(service)
       'key2' => 'value2'
     },
     service: service,
-    collection: Fog::Storage::AzureRM::Directories.new(service: @service)
+    collection: Fog::AzureRM::Storage::Directories.new(service: @service)
   )
 end
 
 def file(service)
-  Fog::Storage::AzureRM::File.new(
+  Fog::AzureRM::Storage::File.new(
     key: 'test_blob',
     directory: directory(service),
     last_modified: Time.parse('Tue, 04 Aug 2015 06:01:08 GMT'),
@@ -230,7 +230,7 @@ def file(service)
     copy_status_description: nil,
     accept_ranges: 0,
     service: service,
-    collection: Fog::Storage::AzureRM::Files.new(service: @service, directory: directory(service))
+    collection: Fog::AzureRM::Storage::Files.new(service: @service, directory: directory(service))
   )
 end
 
@@ -268,7 +268,7 @@ def storage_blob
 end
 
 def public_ip(service)
-  Fog::Network::AzureRM::PublicIp.new(
+  Fog::AzureRM::Network::PublicIp.new(
     name: 'fog-test-public-ip',
     resource_group: 'fog-test-rg',
     location: 'West US',
@@ -278,7 +278,7 @@ def public_ip(service)
 end
 
 def subnet(service)
-  Fog::Network::AzureRM::Subnet.new(
+  Fog::AzureRM::Network::Subnet.new(
     name: 'fog-test-subnet',
     resource_group: 'fog-test-rg',
     virtual_network_name: 'vnet1',
@@ -290,7 +290,7 @@ def subnet(service)
 end
 
 def virtual_network(service)
-  Fog::Network::AzureRM::VirtualNetwork.new(
+  Fog::AzureRM::Network::VirtualNetwork.new(
     name:             'fog-test-virtual-network',
     location:         'westus',
     resource_group:   'fog-test-rg',
@@ -307,7 +307,7 @@ def virtual_network(service)
 end
 
 def network_interface(service)
-  Fog::Network::AzureRM::NetworkInterface.new(
+  Fog::AzureRM::Network::NetworkInterface.new(
     name: 'fog-test-network-interface',
     location: 'West US',
     resource_group: 'fog-test-rg',
@@ -322,7 +322,7 @@ def network_interface(service)
 end
 
 def load_balancer(service)
-  Fog::Network::AzureRM::LoadBalancer.new(
+  Fog::AzureRM::Network::LoadBalancer.new(
     name: 'lb',
     resource_group: 'fogRM-rg',
     location: 'westus',
@@ -389,7 +389,7 @@ def load_balancer(service)
 end
 
 def zone(service)
-  Fog::DNS::AzureRM::Zone.new(
+  Fog::AzureRM::DNS::Zone.new(
     name: 'fog-test-zone.com',
     location: 'global',
     id: '/subscriptions/########-####-####-####-############/resourceGroups/fog-test-rg/providers/Microsoft.Network/dnszones/fog-test-zone.com',
@@ -399,7 +399,7 @@ def zone(service)
 end
 
 def record_set(service)
-  Fog::DNS::AzureRM::RecordSet.new(
+  Fog::AzureRM::DNS::RecordSet.new(
     name: 'fog-test-record_set',
     resource_group: 'fog-test-rg',
     zone_name: 'fog-test-zone.com',
@@ -411,7 +411,7 @@ def record_set(service)
 end
 
 def record_set_cname(service)
-  Fog::DNS::AzureRM::RecordSet.new(
+  Fog::AzureRM::DNS::RecordSet.new(
     name: 'fog-test-record_set',
     resource_group: 'fog-test-rg',
     zone_name: 'fog-test-zone.com',
@@ -423,7 +423,7 @@ def record_set_cname(service)
 end
 
 def network_security_group(service)
-  Fog::Network::AzureRM::NetworkSecurityGroup.new(
+  Fog::AzureRM::Network::NetworkSecurityGroup.new(
     name: 'fog-test-nsg',
     resource_group: 'fog-test-rg',
     location: 'West US',
@@ -443,7 +443,7 @@ def network_security_group(service)
 end
 
 def network_security_rule(service)
-  Fog::Network::AzureRM::NetworkSecurityRule.new(
+  Fog::AzureRM::Network::NetworkSecurityRule.new(
     name: 'fog-test-nsr',
     resource_group: 'fog-test-rg',
     network_security_group_name: 'fog-test-nsr',
@@ -460,7 +460,7 @@ def network_security_rule(service)
 end
 
 def gateway(service)
-  Fog::ApplicationGateway::AzureRM::Gateway.new(
+  Fog::AzureRM::ApplicationGateway::Gateway.new(
     name: 'gateway',
     location: 'eastus',
     resource_group: 'fogRM-rg',
@@ -578,7 +578,7 @@ def gateway(service)
 end
 
 def traffic_manager_end_point(service)
-  Fog::TrafficManager::AzureRM::TrafficManagerEndPoint.new(
+  Fog::AzureRM::TrafficManager::TrafficManagerEndPoint.new(
     name: 'fog-test-end-point',
     traffic_manager_profile_name: 'fog-test-profile',
     resource_group: 'fog-test-rg',
@@ -590,7 +590,7 @@ def traffic_manager_end_point(service)
 end
 
 def traffic_manager_profile(service)
-  Fog::TrafficManager::AzureRM::TrafficManagerProfile.new(
+  Fog::AzureRM::TrafficManager::TrafficManagerProfile.new(
     name: 'fog-test-profile',
     resource_group: 'fog-test-rg',
     traffic_routing_method: 'Performance',
@@ -604,7 +604,7 @@ def traffic_manager_profile(service)
 end
 
 def virtual_network_gateway(service)
-  Fog::Network::AzureRM::VirtualNetworkGateway.new(
+  Fog::AzureRM::Network::VirtualNetworkGateway.new(
     name: 'testNetworkGateway',
     location: 'eastus',
     tags: {
@@ -626,7 +626,7 @@ def virtual_network_gateway(service)
 end
 
 def local_network_gateway(service)
-  Fog::Network::AzureRM::LocalNetworkGateway.new(
+  Fog::AzureRM::Network::LocalNetworkGateway.new(
     name: 'testLocalNetworkGateway',
     location: 'eastus',
     tags: {
@@ -644,7 +644,7 @@ def local_network_gateway(service)
 end
 
 def express_route_circuit(service)
-  Fog::Network::AzureRM::ExpressRouteCircuit.new(
+  Fog::AzureRM::Network::ExpressRouteCircuit.new(
     name: 'testCircuit',
     location: 'eastus',
     resource_group: 'HaiderRG',
@@ -672,7 +672,7 @@ def express_route_circuit(service)
 end
 
 def express_route_circuit_peering(service)
-  Fog::Network::AzureRM::ExpressRouteCircuitPeering.new(
+  Fog::AzureRM::Network::ExpressRouteCircuitPeering.new(
     name: 'AzurePublicPeering',
     circuit_name: 'testCircuit',
     resource_group: 'HaiderRG',
@@ -686,7 +686,7 @@ def express_route_circuit_peering(service)
 end
 
 def express_route_circuit_authorization(service)
-  Fog::Network::AzureRM::ExpressRouteCircuitAuthorization.new(
+  Fog::AzureRM::Network::ExpressRouteCircuitAuthorization.new(
     name: 'UniqueAuthorizationName',
     circuit_name: 'testCircuit',
     resource_group: 'HaiderRG',
@@ -697,7 +697,7 @@ def express_route_circuit_authorization(service)
 end
 
 def virtual_network_gateway_connection(service)
-  Fog::Network::AzureRM::VirtualNetworkGatewayConnection.new(
+  Fog::AzureRM::Network::VirtualNetworkGatewayConnection.new(
     name: 'testNetworkGateway',
     location: 'eastus',
     tags: {
@@ -720,7 +720,7 @@ def virtual_network_gateway_connection(service)
 end
 
 def database(service)
-  Fog::Sql::AzureRM::SqlDatabase.new(
+  Fog::AzureRM::Sql::SqlDatabase.new(
     name: 'fog-test-zone.com',
     id: '/subscriptions/########-####-####-####-############/resourceGroups/vm_custom_image/providers/Microsoft.Sql/servers/test-sql-server-confiz123/databases/confiztestdatab98',
     resource_group: 'fog-test-rg',
@@ -731,7 +731,7 @@ def database(service)
 end
 
 def databases(service)
-  Fog::Sql::AzureRM::SqlDatabases.new(
+  Fog::AzureRM::Sql::SqlDatabases.new(
     resource_group: 'fog-test-rg',
     server_name: 'fog-test-server-name',
     name: 'database-name',
@@ -741,7 +741,7 @@ def databases(service)
 end
 
 def sql_server(service)
-  Fog::Sql::AzureRM::SqlServer.new(
+  Fog::AzureRM::Sql::SqlServer.new(
     name: 'fog-test-zone.com',
     id: '/subscriptions/########-####-####-####-############/resourceGroups/vm_custom_image/providers/Microsoft.Sql/servers/test-sql-server-confiz123',
     resource_group: 'fog-test-rg',
@@ -754,7 +754,7 @@ def sql_server(service)
 end
 
 def sql_servers(service)
-  Fog::Sql::AzureRM::SqlServers.new(
+  Fog::AzureRM::Sql::SqlServers.new(
     name: 'fog-test-zone.com',
     id: '/subscriptions/########-####-####-####-############/resourceGroups/vm_custom_image/providers/Microsoft.Sql/servers/test-sql-server-confiz123',
     resource_group: 'fog-test-rg',
@@ -767,7 +767,7 @@ def sql_servers(service)
 end
 
 def sql_server_firewall_rule(service)
-  Fog::Sql::AzureRM::FirewallRule.new(
+  Fog::AzureRM::Sql::FirewallRule.new(
     name: 'fog-test-firewall-rule-name',
     id: '/subscriptions/########-####-####-####-############/resourceGroups/vm_custom_image/providers/Microsoft.Sql/servers/test-sql-server-confiz123/firewallRules/rule-name',
     resource_group: 'fog-test-rg',
@@ -779,7 +779,7 @@ def sql_server_firewall_rule(service)
 end
 
 def sql_server_firewall_rules(service)
-  Fog::Sql::AzureRM::FirewallRules.new(
+  Fog::AzureRM::Sql::FirewallRules.new(
     name: 'fog-test-firewall-rule-name',
     id: '/subscriptions/########-####-####-####-############/resourceGroups/vm_custom_image/providers/Microsoft.Sql/servers/test-sql-server-confiz123/firewallRules/rule-name',
     resource_group: 'fog-test-rg',
@@ -791,7 +791,7 @@ def sql_server_firewall_rules(service)
 end
 
 def managed_disk(service)
-  Fog::Compute::AzureRM::ManagedDisk.new(
+  Fog::AzureRM::Compute::ManagedDisk.new(
     name: 'managed-disk',
     location: 'East US',
     resource_group_name: 'fog-test-rg',
@@ -805,7 +805,7 @@ def managed_disk(service)
 end
 
 def key_vault(service)
-  Fog::KeyVault::AzureRM::Vault.new(
+  Fog::AzureRM::KeyVault::Vault.new(
     name: 'key-vault',
     location: 'East US',
     resource_group_name: 'fog-test-rg',

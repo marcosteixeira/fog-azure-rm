@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # LoadBalangcingRule model for Network Service
       class LoadBalangcingRule < Fog::Model
         identity :name

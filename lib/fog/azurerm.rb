@@ -18,64 +18,21 @@ require 'fog/azurerm/models/storage/sku_tier'
 require 'fog/azurerm/models/storage/kind'
 
 module Fog
-  # Autoload Module for Credentials
-  module Credentials
-    autoload :AzureRM, File.expand_path('azurerm/credentials', __dir__)
-  end
-
-  # Autoload Module for Compute
-  module Compute
-    autoload :AzureRM, File.expand_path('azurerm/compute', __dir__)
-  end
-
-  # Autoload Module for DNS
-  module DNS
-    autoload :AzureRM, File.expand_path('azurerm/dns', __dir__)
-  end
-
-  # Autoload Module for Network
-  module Network
-    autoload :AzureRM, File.expand_path('azurerm/network', __dir__)
-  end
-
-  # Autoload Module for Resources
-  module Resources
-    autoload :AzureRM, File.expand_path('azurerm/resources', __dir__)
-  end
-
-  # Autoload Module for TrafficManager
-  module TrafficManager
-    autoload :AzureRM, File.expand_path('azurerm/traffic_manager', __dir__)
-  end
-
-  # Autoload Module for Storage
-  module Storage
-    autoload :AzureRM, File.expand_path('azurerm/storage', __dir__)
-  end
-
-  # Autoload Module for ApplicationGateway
-  module ApplicationGateway
-    autoload :AzureRM, File.expand_path('azurerm/application_gateway', __dir__)
-  end
-
-  # Autoload Module for Sql
-  module Sql
-    autoload :AzureRM, File.expand_path('azurerm/sql', __dir__)
-  end
-
-  # Autoload Module for KeyVault
-  module KeyVault
-    autoload :AzureRM, File.expand_path('azurerm/key_vault', __dir__)
-  end
-
-  # Autoload Module for Response::Asynchronous
-  module AzureRM
-    autoload :AsyncResponse, File.expand_path('azurerm/async_response', __dir__)
-  end
-
-  # Main AzureRM fog Provider Module
   module AzureRM
     extend Fog::Provider
+
+    autoload :Credentials, File.expand_path('azurerm/credentials', __dir__)
+    autoload :Compute, File.expand_path('azurerm/compute', __dir__)
+    autoload :DNS, File.expand_path('azurerm/dns', __dir__)
+    autoload :Network, File.expand_path('azurerm/network', __dir__)
+    autoload :Resources, File.expand_path('azurerm/resources', __dir__)
+    autoload :TrafficManager, File.expand_path('azurerm/traffic_manager', __dir__)
+    autoload :Storage, File.expand_path('../azurerm/storage', __FILE__)
+    autoload :ApplicationGateway, File.expand_path('azurerm/application_gateway', __dir__)
+    autoload :Sql, File.expand_path('azurerm/sql', __dir__)
+    autoload :KeyVault, File.expand_path('azurerm/key_vault', __dir__)
+    autoload :AsyncResponse, File.expand_path('azurerm/async_response', __dir__)
+
     service(:resources, 'Resources')
     service(:dns, 'DNS')
     service(:storage, 'Storage')

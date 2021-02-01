@@ -1,6 +1,6 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # This class is giving implementation of create/save and
       # delete/destroy for resource group.
       class ResourceGroup < Fog::Model
@@ -22,7 +22,7 @@ module Fog
           requires :name
           requires :location
           resource_group = service.create_resource_group(name, location, tags)
-          merge_attributes(Fog::Resources::AzureRM::ResourceGroup.parse(resource_group))
+          merge_attributes(Fog::AzureRM::Resources::ResourceGroup.parse(resource_group))
         end
 
         def destroy

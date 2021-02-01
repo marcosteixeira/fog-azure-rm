@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def reset_connection_shared_key(resource_group_name, virtual_network_gateway_connection_name, shared_key_length)

@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class is giving implementation of create/save and
       # delete/destroy for Virtual Machine.
       class Server < Fog::Model
@@ -73,8 +73,8 @@ module Fog
 
           unless vm.storage_profile.data_disks.nil?
             vm.storage_profile.data_disks.each do |disk|
-              data_disk = Fog::Compute::AzureRM::DataDisk.new
-              hash['data_disks'] << data_disk.merge_attributes(Fog::Compute::AzureRM::DataDisk.parse(disk))
+              data_disk = Fog::AzureRM::Compute::DataDisk.new
+              hash['data_disks'] << data_disk.merge_attributes(Fog::AzureRM::Compute::DataDisk.parse(disk))
             end
           end
 
@@ -115,7 +115,7 @@ module Fog
           else
             vm = service.create_virtual_machine(virtual_machine_params(ssh_key_path))
             vm = service.get_virtual_machine(resource_group, name, false)
-            merge_attributes(Fog::Compute::AzureRM::Server.parse(vm))
+            merge_attributes(Fog::AzureRM::Compute::Server.parse(vm))
           end
         end
 
@@ -165,22 +165,22 @@ module Fog
 
         def attach_data_disk(disk_name, disk_size, storage_account_name, async = false)
           response = service.attach_data_disk_to_vm(data_disk_params(disk_name, disk_size, storage_account_name), async)
-          async ? create_fog_async_response(response) : merge_attributes(Fog::Compute::AzureRM::Server.parse(response))
+          async ? create_fog_async_response(response) : merge_attributes(Fog::AzureRM::Compute::Server.parse(response))
         end
 
         def detach_data_disk(disk_name, async = false)
           response = service.detach_data_disk_from_vm(resource_group, name, disk_name, async)
-          async ? create_fog_async_response(response) : merge_attributes(Fog::Compute::AzureRM::Server.parse(response))
+          async ? create_fog_async_response(response) : merge_attributes(Fog::AzureRM::Compute::Server.parse(response))
         end
 
         def attach_managed_disk(disk_name, disk_resource_group, async = false, caching = 'None')
           response = service.attach_data_disk_to_vm(data_disk_params(disk_name, nil, nil, disk_resource_group, caching), async)
-          async ? create_fog_async_response(response) : merge_attributes(Fog::Compute::AzureRM::Server.parse(response))
+          async ? create_fog_async_response(response) : merge_attributes(Fog::AzureRM::Compute::Server.parse(response))
         end
 
         def detach_managed_disk(disk_name, async = false)
           response = service.detach_data_disk_from_vm(resource_group, name, disk_name, async)
-          async ? create_fog_async_response(response) : merge_attributes(Fog::Compute::AzureRM::Server.parse(response))
+          async ? create_fog_async_response(response) : merge_attributes(Fog::AzureRM::Compute::Server.parse(response))
         end
 
         def delete_extra_resources
@@ -192,7 +192,7 @@ module Fog
 
         def update_attributes
           vm = service.get_virtual_machine(resource_group, name, false)
-          merge_attributes(Fog::Compute::AzureRM::Server.parse(vm))
+          merge_attributes(Fog::AzureRM::Compute::Server.parse(vm))
         end
 
         private
@@ -202,7 +202,7 @@ module Fog
         end
 
         def create_fog_async_response(response, delete_extra_resource = false)
-          server = Fog::Compute::AzureRM::Server.new(service: service)
+          server = Fog::AzureRM::Compute::Server.new(service: service)
           Fog::AzureRM::AsyncResponse.new(server, response, delete_extra_resource)
         end
 

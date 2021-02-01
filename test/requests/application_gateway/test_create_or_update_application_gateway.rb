@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Create Application Gateway Request
 class TestCreateOrUpdateApplicationGateway < Minitest::Test
   def setup
-    @service = Fog::ApplicationGateway::AzureRM.new(credentials)
+    @service = Fog::AzureRM::ApplicationGateway.new(credentials)
     gateway_client = @service.instance_variable_get(:@network_client)
     @gateways = gateway_client.application_gateways
     @response = ApiStub::Requests::ApplicationGateway::Gateway.create_application_gateway_response(gateway_client)

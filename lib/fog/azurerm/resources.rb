@@ -1,7 +1,7 @@
 module Fog
-  module Resources
+  module AzureRM
     # This class registers models, requests and collections
-    class AzureRM < Fog::Service
+    class Resources < Fog::Service
       requires :tenant_id
       requires :client_id
       requires :client_secret
@@ -60,7 +60,7 @@ module Fog
 
           options[:environment] = 'AzureCloud' if options[:environment].nil?
 
-          credentials = Fog::Credentials::AzureRM.get_credentials(options[:tenant_id], options[:client_id], options[:client_secret], options[:environment])
+          credentials = Fog::AzureRM::Credentials.get_credentials(options[:tenant_id], options[:client_id], options[:client_secret], options[:environment])
           telemetry = "fog-azure-rm/#{Fog::AzureRM::VERSION}"
           @rmc = ::Azure::ARM::Resources::ResourceManagementClient.new(credentials, resource_manager_endpoint_url(options[:environment]))
           @rmc.subscription_id = options[:subscription_id]

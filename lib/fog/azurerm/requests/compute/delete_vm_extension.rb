@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # Real class for Compute Request
       class Real
         def delete_vm_extension(resource_group, vm_name, extension_name)

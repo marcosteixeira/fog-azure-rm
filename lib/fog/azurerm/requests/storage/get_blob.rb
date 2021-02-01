@@ -1,6 +1,6 @@
 module Fog
-  module Storage
-    class AzureRM
+  module AzureRM
+    class Storage
       # This class provides the actual implemention for service calls.
       class Real
         BLOCK_SIZE = 32 * 1024 * 1024 # 32 MB

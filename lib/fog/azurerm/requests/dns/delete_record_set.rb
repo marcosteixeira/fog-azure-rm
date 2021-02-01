@@ -1,6 +1,6 @@
 module Fog
-  module DNS
-    class AzureRM
+  module AzureRM
+    class DNS
       # Real class for DNS Request
       class Real
         def delete_record_set(resource_group, name, zone_name, record_type)

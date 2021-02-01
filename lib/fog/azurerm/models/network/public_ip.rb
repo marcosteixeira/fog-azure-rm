@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # PublicIP model class for Network Service
       class PublicIp < Fog::Model
         identity :name
@@ -43,7 +43,7 @@ module Fog
           requires :location
           requires :resource_group
           public_ip = service.create_or_update_public_ip(resource_group, name, location, public_ip_allocation_method, idle_timeout_in_minutes, domain_name_label, tags)
-          merge_attributes(Fog::Network::AzureRM::PublicIp.parse(public_ip))
+          merge_attributes(Fog::AzureRM::Network::PublicIp.parse(public_ip))
         end
 
         def destroy
@@ -54,7 +54,7 @@ module Fog
           validate_input(input_hash)
           merge_attributes(input_hash)
           pip = service.create_or_update_public_ip(resource_group, name, location, public_ip_allocation_method, idle_timeout_in_minutes, domain_name_label, tags)
-          merge_attributes(Fog::Network::AzureRM::PublicIp.parse(pip))
+          merge_attributes(Fog::AzureRM::Network::PublicIp.parse(pip))
         end
 
         private

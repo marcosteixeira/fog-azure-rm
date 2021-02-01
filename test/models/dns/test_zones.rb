@@ -3,8 +3,8 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Zone Collection
 class TestZones < Minitest::Test
   def setup
-    @service = Fog::DNS::AzureRM.new(credentials)
-    @zones = Fog::DNS::AzureRM::Zones.new(service: @service)
+    @service = Fog::AzureRM::DNS.new(credentials)
+    @zones = Fog::AzureRM::DNS::Zones.new(service: @service)
     @dns_client1 = @service.instance_variable_get(:@dns_client)
     @response = [ApiStub::Models::DNS::Zone.create_zone_obj(@dns_client1)]
   end
@@ -22,10 +22,10 @@ class TestZones < Minitest::Test
 
   def test_all_method_response
     @service.stub :list_zones, @response do
-      assert_instance_of Fog::DNS::AzureRM::Zones, @zones.all
+      assert_instance_of Fog::AzureRM::DNS::Zones, @zones.all
       assert @zones.all.size >= 1
       @zones.all.each do |s|
-        assert_instance_of Fog::DNS::AzureRM::Zone, s
+        assert_instance_of Fog::AzureRM::DNS::Zone, s
       end
     end
   end
@@ -33,7 +33,7 @@ class TestZones < Minitest::Test
   def test_get_method_response
     response = ApiStub::Models::DNS::Zone.create_zone_obj(@dns_client1)
     @service.stub :get_zone, response do
-      assert_instance_of Fog::DNS::AzureRM::Zone, @zones.get('fog-test-rg', 'fog-test-zone.com')
+      assert_instance_of Fog::AzureRM::DNS::Zone, @zones.get('fog-test-rg', 'fog-test-zone.com')
     end
   end
 

@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Mock class for Network Request
       class Real
         def check_vnet_gateway_exists(resource_group_name, network_gateway_name)

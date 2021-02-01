@@ -1,6 +1,6 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # ProviderResourceType model class
       class ProviderResourceType < Fog::Model
         attribute :resource_type

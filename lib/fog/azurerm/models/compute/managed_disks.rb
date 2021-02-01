@@ -1,10 +1,10 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class is giving implementation of all/list, get and
       # check existence for managed disk.
       class ManagedDisks < Fog::Collection
-        model Fog::Compute::AzureRM::ManagedDisk
+        model Fog::AzureRM::Compute::ManagedDisk
         attribute :resource_group
         def all
           if !resource_group.nil?
@@ -13,15 +13,15 @@ module Fog
           else
             disks = service.list_managed_disks_in_subscription
           end
-          managed_disks = disks.map { |disk| Fog::Compute::AzureRM::ManagedDisk.parse(disk) }
+          managed_disks = disks.map { |disk| Fog::AzureRM::Compute::ManagedDisk.parse(disk) }
 
           load(managed_disks)
         end
 
         def get(resource_group_name, disk_name)
           disk = service.get_managed_disk(resource_group_name, disk_name)
-          managed_disk_fog = Fog::Compute::AzureRM::ManagedDisk.new(service: service)
-          managed_disk_fog.merge_attributes(Fog::Compute::AzureRM::ManagedDisk.parse(disk))
+          managed_disk_fog = Fog::AzureRM::Compute::ManagedDisk.new(service: service)
+          managed_disk_fog.merge_attributes(Fog::AzureRM::Compute::ManagedDisk.parse(disk))
         end
 
         def check_managed_disk_exists(resource_group, disk_name)
@@ -34,8 +34,8 @@ module Fog
 
         def revoke_access(resource_group_name, disk_name)
           response = service.revoke_access_to_managed_disk(resource_group_name, disk_name)
-          operation_status_response = Fog::Compute::AzureRM::OperationStatusResponse.new(service: service)
-          operation_status_response.merge_attributes(Fog::Compute::AzureRM::OperationStatusResponse.parse(response))
+          operation_status_response = Fog::AzureRM::Compute::OperationStatusResponse.new(service: service)
+          operation_status_response.merge_attributes(Fog::AzureRM::Compute::OperationStatusResponse.parse(response))
         end
       end
     end

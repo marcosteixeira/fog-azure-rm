@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # DataDisk Model for Compute Service
       class DataDisk < Fog::Model
         identity  :name

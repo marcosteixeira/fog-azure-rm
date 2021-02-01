@@ -1,6 +1,6 @@
 module Fog
-  module TrafficManager
-    class AzureRM
+  module AzureRM
+    class TrafficManager
       # This class provides the actual implementation for service calls.
       class Real
         def check_traffic_manager_endpoint_exists(resource_group, traffic_manager_profile_name, traffic_manager_end_point, type)

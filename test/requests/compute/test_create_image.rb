@@ -3,7 +3,7 @@ require File.expand_path('../../test_helper', __dir__)
 # Test class for Create Image Request
 class TestCreateImage < Minitest::Test
   def setup
-    @service = Fog::Compute::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Compute.new(credentials)
     compute_client = @service.instance_variable_get(:@compute_mgmt_client)
     @image = compute_client.images
     @response = ApiStub::Requests::Compute::Image.create_image(compute_client)

@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for List Express Route Circuit Authorization Request
 class TestListExpressRouteCircuitAuthorization < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     @network_client = @service.instance_variable_get(:@network_client)
     @circuit_authorization = @network_client.express_route_circuit_authorizations
   end

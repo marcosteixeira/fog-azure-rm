@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Delete Deployment Request
 class TestDeleteDeployment < Minitest::Test
   def setup
-    @service = Fog::Resources::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Resources.new(credentials)
     client = @service.instance_variable_get(:@rmc)
     @deployments = client.deployments
     @resource_group = 'fog-test-rg'

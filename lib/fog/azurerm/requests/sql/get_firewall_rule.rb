@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Real class for Sql Server Firewall Rule Request
       class Real
         def get_firewall_rule(resource_group, server_name, rule_name)

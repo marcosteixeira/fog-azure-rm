@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # Gateway model class for Application Gateway Service
       class Gateway < Fog::Model
         identity :name
@@ -40,62 +40,62 @@ module Fog
 
           hash['gateway_ip_configurations'] = []
           gateway.gateway_ipconfigurations.each do |ip_configuration|
-            gateway_ip_configuration = Fog::ApplicationGateway::AzureRM::IPConfiguration.new
-            hash['gateway_ip_configurations'] << gateway_ip_configuration.merge_attributes(Fog::ApplicationGateway::AzureRM::IPConfiguration.parse(ip_configuration))
+            gateway_ip_configuration = Fog::AzureRM::ApplicationGateway::IPConfiguration.new
+            hash['gateway_ip_configurations'] << gateway_ip_configuration.merge_attributes(Fog::AzureRM::ApplicationGateway::IPConfiguration.parse(ip_configuration))
           end unless gateway.gateway_ipconfigurations.nil?
 
           hash['ssl_certificates'] = []
           gateway.ssl_certificates.each do |certificate|
-            ssl_certificate = Fog::ApplicationGateway::AzureRM::SslCertificate.new
-            hash['ssl_certificates'] << ssl_certificate.merge_attributes(Fog::ApplicationGateway::AzureRM::SslCertificate.parse(certificate))
+            ssl_certificate = Fog::AzureRM::ApplicationGateway::SslCertificate.new
+            hash['ssl_certificates'] << ssl_certificate.merge_attributes(Fog::AzureRM::ApplicationGateway::SslCertificate.parse(certificate))
           end unless gateway.ssl_certificates.nil?
 
           hash['frontend_ip_configurations'] = []
           gateway.frontend_ipconfigurations.each do |frontend_ip_config|
-            frontend_ip_configuration = Fog::ApplicationGateway::AzureRM::FrontendIPConfiguration.new
-            hash['frontend_ip_configurations'] << frontend_ip_configuration.merge_attributes(Fog::ApplicationGateway::AzureRM::FrontendIPConfiguration.parse(frontend_ip_config))
+            frontend_ip_configuration = Fog::AzureRM::ApplicationGateway::FrontendIPConfiguration.new
+            hash['frontend_ip_configurations'] << frontend_ip_configuration.merge_attributes(Fog::AzureRM::ApplicationGateway::FrontendIPConfiguration.parse(frontend_ip_config))
           end unless gateway.frontend_ipconfigurations.nil?
 
           hash['frontend_ports'] = []
           gateway.frontend_ports.each do |port|
-            frontend_port = Fog::ApplicationGateway::AzureRM::FrontendPort.new
-            hash['frontend_ports'] << frontend_port.merge_attributes(Fog::ApplicationGateway::AzureRM::FrontendPort.parse(port))
+            frontend_port = Fog::AzureRM::ApplicationGateway::FrontendPort.new
+            hash['frontend_ports'] << frontend_port.merge_attributes(Fog::AzureRM::ApplicationGateway::FrontendPort.parse(port))
           end unless gateway.frontend_ports.nil?
 
           hash['probes'] = []
           gateway.probes.each do |probe|
-            gateway_probe = Fog::ApplicationGateway::AzureRM::Probe.new
-            hash['probes'] << gateway_probe.merge_attributes(Fog::ApplicationGateway::AzureRM::Probe.parse(probe))
+            gateway_probe = Fog::AzureRM::ApplicationGateway::Probe.new
+            hash['probes'] << gateway_probe.merge_attributes(Fog::AzureRM::ApplicationGateway::Probe.parse(probe))
           end unless gateway.probes.nil?
 
           hash['backend_address_pools'] = []
           gateway.backend_address_pools.each do |address|
-            backend_address_pool = Fog::ApplicationGateway::AzureRM::BackendAddressPool.new
-            hash['backend_address_pools'] << backend_address_pool.merge_attributes(Fog::ApplicationGateway::AzureRM::BackendAddressPool.parse(address))
+            backend_address_pool = Fog::AzureRM::ApplicationGateway::BackendAddressPool.new
+            hash['backend_address_pools'] << backend_address_pool.merge_attributes(Fog::AzureRM::ApplicationGateway::BackendAddressPool.parse(address))
           end unless gateway.backend_address_pools.nil?
 
           hash['backend_http_settings_list'] = []
           gateway.backend_http_settings_collection.each do |http_setting|
-            backend_http_setting = Fog::ApplicationGateway::AzureRM::BackendHttpSetting.new
-            hash['backend_http_settings_list'] << backend_http_setting.merge_attributes(Fog::ApplicationGateway::AzureRM::BackendHttpSetting.parse(http_setting))
+            backend_http_setting = Fog::AzureRM::ApplicationGateway::BackendHttpSetting.new
+            hash['backend_http_settings_list'] << backend_http_setting.merge_attributes(Fog::AzureRM::ApplicationGateway::BackendHttpSetting.parse(http_setting))
           end unless gateway.backend_http_settings_collection.nil?
 
           hash['http_listeners'] = []
           gateway.http_listeners.each do |listener|
-            http_listener = Fog::ApplicationGateway::AzureRM::HttpListener.new
-            hash['http_listeners'] << http_listener.merge_attributes(Fog::ApplicationGateway::AzureRM::HttpListener.parse(listener))
+            http_listener = Fog::AzureRM::ApplicationGateway::HttpListener.new
+            hash['http_listeners'] << http_listener.merge_attributes(Fog::AzureRM::ApplicationGateway::HttpListener.parse(listener))
           end unless gateway.http_listeners.nil?
 
           hash['url_path_maps'] = []
           gateway.url_path_maps.each do |map|
-            url_path_map = Fog::ApplicationGateway::AzureRM::UrlPathMap.new
-            hash['url_path_maps'] << url_path_map.merge_attributes(Fog::ApplicationGateway::AzureRM::UrlPathMap.parse(map))
+            url_path_map = Fog::AzureRM::ApplicationGateway::UrlPathMap.new
+            hash['url_path_maps'] << url_path_map.merge_attributes(Fog::AzureRM::ApplicationGateway::UrlPathMap.parse(map))
           end unless gateway.url_path_maps.nil?
 
           hash['request_routing_rules'] = []
           gateway.request_routing_rules.each do |rule|
-            request_routing_rule = Fog::ApplicationGateway::AzureRM::RequestRoutingRule.new
-            hash['request_routing_rules'] << request_routing_rule.merge_attributes(Fog::ApplicationGateway::AzureRM::RequestRoutingRule.parse(rule))
+            request_routing_rule = Fog::AzureRM::ApplicationGateway::RequestRoutingRule.new
+            hash['request_routing_rules'] << request_routing_rule.merge_attributes(Fog::AzureRM::ApplicationGateway::RequestRoutingRule.parse(rule))
           end unless gateway.request_routing_rules.nil?
 
           hash['tags'] = gateway.tags
@@ -116,7 +116,7 @@ module Fog
           validate_url_path_maps(url_path_maps) unless url_path_maps.nil?
           validate_request_routing_rules(request_routing_rules) unless request_routing_rules.nil?
           gateway = service.create_or_update_application_gateway(application_gateway_params)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def application_gateway_params
@@ -549,55 +549,55 @@ module Fog
         def update_sku(sku_name, sku_capacity = nil)
           gateway_hash = serialize_sub_resources(application_gateway_params)
           gateway = service.update_sku_attributes(gateway_hash, sku_name, sku_capacity)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def update_gateway_ip_configuration(subnet_id)
           gateway_hash = serialize_sub_resources(application_gateway_params)
           gateway = service.update_subnet_id_in_gateway_ip_configuration(gateway_hash, subnet_id)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def add_ssl_certificate(ssl_certificate_obj)
           gateway_hash = serialize_sub_resources(application_gateway_params)
           gateway_hash[:ssl_certificates] << ssl_certificate_obj
           gateway = service.create_or_update_application_gateway(gateway_hash)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def remove_ssl_certificate(ssl_certificate_obj)
           gateway_hash = serialize_sub_resources(application_gateway_params)
           gateway_hash[:ssl_certificates].delete(ssl_certificate_obj)
           gateway = service.create_or_update_application_gateway(gateway_hash)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def add_frontend_port(frontend_port_obj)
           gateway_hash = serialize_sub_resources(application_gateway_params)
           gateway_hash[:frontend_ports] << frontend_port_obj
           gateway = service.create_or_update_application_gateway(gateway_hash)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def remove_frontend_port(frontend_port_obj)
           gateway_hash = serialize_sub_resources(application_gateway_params)
           gateway_hash[:frontend_ports].delete(frontend_port_obj)
           gateway = service.create_or_update_application_gateway(gateway_hash)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def add_probe(probe_obj)
           gateway_hash = serialize_sub_resources(application_gateway_params)
           gateway_hash[:probes] << probe_obj
           gateway = service.create_or_update_application_gateway(gateway_hash)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def remove_probe(probe_obj)
           gateway_hash = serialize_sub_resources(application_gateway_params)
           gateway_hash[:probes].delete(probe_obj)
           gateway = service.create_or_update_application_gateway(gateway_hash)
-          merge_attributes(Fog::ApplicationGateway::AzureRM::Gateway.parse(gateway))
+          merge_attributes(Fog::AzureRM::ApplicationGateway::Gateway.parse(gateway))
         end
 
         def start

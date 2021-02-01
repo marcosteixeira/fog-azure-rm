@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Mock class for Sql Request
       class Real
         def check_firewall_rule_exists(resource_group, server_name, rule_name)

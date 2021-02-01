@@ -1,6 +1,6 @@
 module Fog
-  module Storage
-    class AzureRM
+  module AzureRM
+    class Storage
       # This class provides the actual implemention for service calls.
       class Real
         # Get a public container url from Azure storage container

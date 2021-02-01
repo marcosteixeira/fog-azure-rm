@@ -1,6 +1,6 @@
 module Fog
-  module DNS
-    class AzureRM
+  module AzureRM
+    class DNS
       # This class is giving implementation of create/save and
       # delete/destroy for RecordSet.
       class RecordSet < Fog::Model
@@ -35,16 +35,16 @@ module Fog
           unless recordset.arecords.nil?
             a_records = []
             recordset.arecords.each do |record|
-              a_record = Fog::DNS::AzureRM::ARecord.new
-              a_record.merge_attributes(Fog::DNS::AzureRM::ARecord.parse(record))
+              a_record = Fog::AzureRM::DNS::ARecord.new
+              a_record.merge_attributes(Fog::AzureRM::DNS::ARecord.parse(record))
               a_records.push(a_record)
             end
             hash['a_records'] = a_records
           end
 
           unless recordset.cname_record.nil?
-            cname_record = Fog::DNS::AzureRM::CnameRecord.new
-            cname_record.merge_attributes(Fog::DNS::AzureRM::CnameRecord.parse(recordset.cname_record))
+            cname_record = Fog::AzureRM::DNS::CnameRecord.new
+            cname_record.merge_attributes(Fog::AzureRM::DNS::CnameRecord.parse(recordset.cname_record))
             hash['cname_record'] = cname_record
           end
 
@@ -54,7 +54,7 @@ module Fog
         def save
           requires :name, :resource_group, :zone_name, :records, :type, :ttl
           record_set = service.create_or_update_record_set(record_set_params, type)
-          merge_attributes(Fog::DNS::AzureRM::RecordSet.parse(record_set))
+          merge_attributes(Fog::AzureRM::DNS::RecordSet.parse(record_set))
         end
 
         def destroy
@@ -69,19 +69,19 @@ module Fog
           params = record_set_params
           params[:ttl] = ttl
           record_set = service.create_or_update_record_set(params, get_record_type(type))
-          merge_attributes(Fog::DNS::AzureRM::RecordSet.parse(record_set))
+          merge_attributes(Fog::AzureRM::DNS::RecordSet.parse(record_set))
         end
 
         def add_a_type_record(record)
           records << record
           record_set = service.create_or_update_record_set(record_set_params, get_record_type(type))
-          merge_attributes(Fog::DNS::AzureRM::RecordSet.parse(record_set))
+          merge_attributes(Fog::AzureRM::DNS::RecordSet.parse(record_set))
         end
 
         def remove_a_type_record(record)
           records.delete(record)
           record_set = service.create_or_update_record_set(record_set_params, get_record_type(type))
-          merge_attributes(Fog::DNS::AzureRM::RecordSet.parse(record_set))
+          merge_attributes(Fog::AzureRM::DNS::RecordSet.parse(record_set))
         end
 
         private

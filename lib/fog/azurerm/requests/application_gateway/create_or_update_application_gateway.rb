@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # Real class for Application Gateway Request
       class Real
         def create_or_update_application_gateway(gateway_params)

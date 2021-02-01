@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # OperationStatusResponse model for Compute Service
       class OperationStatusResponse < Fog::Model
         attribute :name

@@ -14,7 +14,7 @@ require 'fog/azurerm'
 Next, create a connection to the Key Vault Service:
 
 ```ruby
-fog_key_vault_service = Fog::KeyVault::AzureRM.new(
+fog_key_vault_service = Fog::AzureRM::KeyVault.new(
         tenant_id: '<Tenant Id>',                  # Tenant Id of Azure Active Directory Application
         client_id:    '<Client Id>',               # Client Id of Azure Active Directory Application
         client_secret: '<Client Secret>',          # Client Secret of Azure Active Directory Application

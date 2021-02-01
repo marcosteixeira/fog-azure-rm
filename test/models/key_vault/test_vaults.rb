@@ -3,9 +3,9 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Vaults Collection
 class TestVaults < Minitest::Test
   def setup
-    @service = Fog::KeyVault::AzureRM.new(credentials)
+    @service = Fog::AzureRM::KeyVault.new(credentials)
     @key_vault_client = @service.instance_variable_get(:@key_vault_client)
-    @vaults = Fog::KeyVault::AzureRM::Vaults.new(resource_group: 'fog-test-rg', service: @service)
+    @vaults = Fog::AzureRM::KeyVault::Vaults.new(resource_group: 'fog-test-rg', service: @service)
     @response = ApiStub::Models::KeyVault::Vault.create_vault_response(@key_vault_client)
   end
 
@@ -27,17 +27,17 @@ class TestVaults < Minitest::Test
   def test_all_method_response
     response = [@response]
     @service.stub :list_vaults, response do
-      assert_instance_of Fog::KeyVault::AzureRM::Vaults, @vaults.all
+      assert_instance_of Fog::AzureRM::KeyVault::Vaults, @vaults.all
       assert @vaults.all.size >= 1
       @vaults.all.each do |vault|
-        assert_instance_of Fog::KeyVault::AzureRM::Vault, vault
+        assert_instance_of Fog::AzureRM::KeyVault::Vault, vault
       end
     end
   end
 
   def test_get_method_response
     @service.stub :get_vault, @response do
-      assert_instance_of Fog::KeyVault::AzureRM::Vault, @vaults.get('fog-test-rg', 'fog-test-kv')
+      assert_instance_of Fog::AzureRM::KeyVault::Vault, @vaults.get('fog-test-rg', 'fog-test-kv')
     end
   end
 

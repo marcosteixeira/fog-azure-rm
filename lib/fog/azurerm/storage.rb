@@ -1,7 +1,7 @@
 module Fog
-  module Storage
+  module AzureRM
     # This class registers models, requests and collections
-    class AzureRM < Fog::Service
+    class Storage < Fog::Service
       # Recognizes when creating management client
       recognizes :tenant_id
       recognizes :client_id
@@ -108,7 +108,7 @@ module Fog
           @subscription_id = options[:subscription_id]
           @environment = options[:environment]
 
-          credentials = Fog::Credentials::AzureRM.get_credentials(@tenant_id, @client_id, @client_secret, @environment)
+          credentials = Fog::AzureRM::Credentials.get_credentials(@tenant_id, @client_id, @client_secret, @environment)
           telemetry = "fog-azure-rm/#{Fog::AzureRM::VERSION}"
           unless credentials.nil?
             @storage_mgmt_client = ::Azure::ARM::Storage::StorageManagementClient.new(credentials, resource_manager_endpoint_url(@environment))

@@ -15,7 +15,7 @@ require 'fog/azurerm'
 Next, create a connection to the SQL Service:
 
 ```ruby
-fog_sql_service = Fog::Sql::AzureRM.new(
+fog_sql_service = Fog::AzureRM::Sql.new(
       tenant_id:        '<Tenant Id>',                                                      # Tenant Id of Azure Active Directory Application
       client_id:        '<Client Id>',                                                      # Client Id of Azure Active Directory Application
       client_secret:    '<Client Secret>',                                                  # Client Secret of Azure Active Directory Application

@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Get Storage Access Keys
 class TestGetStorageAccessKeys < Minitest::Test
   def setup
-    @service = Fog::Storage::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Storage.new(credentials)
     @storage_mgmt_client = @service.instance_variable_get(:@storage_mgmt_client)
     @storage_accounts = @storage_mgmt_client.storage_accounts
   end

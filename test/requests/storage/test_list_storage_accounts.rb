@@ -4,7 +4,7 @@ require File.expand_path '../../test_helper', __dir__
 class TestListStorageAccounts < Minitest::Test
   # This class posesses the test cases for the requests of storage account service.
   def setup
-    @azure_credentials = Fog::Storage::AzureRM.new(credentials)
+    @azure_credentials = Fog::AzureRM::Storage.new(credentials)
     @storage_mgmt_client = @azure_credentials.instance_variable_get(:@storage_mgmt_client)
     @storage_accounts = @storage_mgmt_client.storage_accounts
   end

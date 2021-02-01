@@ -3,8 +3,8 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Resource Model
 class TestResource < Minitest::Test
   def setup
-    @service = Fog::Resources::AzureRM.new(credentials)
-    @resource = Fog::Resources::AzureRM::AzureResource.new
+    @service = Fog::AzureRM::Resources.new(credentials)
+    @resource = Fog::AzureRM::Resources::AzureResource.new
   end
 
   def test_model_attributes

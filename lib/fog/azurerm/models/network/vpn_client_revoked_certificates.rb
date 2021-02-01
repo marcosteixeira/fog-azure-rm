@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Vpn Client Revoked Certificate model class for Network Service
       class VpnClientRevokedCertificate < Fog::Model
         attribute :name

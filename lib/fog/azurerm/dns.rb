@@ -1,7 +1,7 @@
 module Fog
-  module DNS
+  module AzureRM
     # This class registers models, requests and collections
-    class AzureRM < Fog::Service
+    class DNS < Fog::Service
       requires :tenant_id
       requires :client_id
       requires :client_secret
@@ -47,7 +47,7 @@ module Fog
 
           options[:environment] = 'AzureCloud' if options[:environment].nil?
 
-          credentials = Fog::Credentials::AzureRM.get_credentials(options[:tenant_id], options[:client_id], options[:client_secret], options[:environment])
+          credentials = Fog::AzureRM::Credentials.get_credentials(options[:tenant_id], options[:client_id], options[:client_secret], options[:environment])
           telemetry = "fog-azure-rm/#{Fog::AzureRM::VERSION}"
           @dns_client = ::Azure::ARM::Dns::DnsManagementClient.new(credentials, resource_manager_endpoint_url(options[:environment]))
           @dns_client.subscription_id = options[:subscription_id]
@@ -56,7 +56,7 @@ module Fog
           @client_id = options[:client_id]
           @client_secret = options[:client_secret]
           @environment = options[:environment]
-          @resources = Fog::Resources::AzureRM.new(
+          @resources = Fog::AzureRM::Resources.new(
             tenant_id: options[:tenant_id],
             client_id: options[:client_id],
             client_secret: options[:client_secret],

@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # Probe model class for Application Gateway Service
       class Probe < Fog::Model
         identity :name

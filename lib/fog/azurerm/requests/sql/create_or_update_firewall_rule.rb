@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Real class for Firewall Rule Request
       class Real
         def create_or_update_firewall_rule(firewall_hash)

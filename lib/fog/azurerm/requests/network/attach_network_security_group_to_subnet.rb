@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def attach_network_security_group_to_subnet(resource_group, subnet_name, virtual_network_name, address_prefix, route_table_id, network_security_group_id)

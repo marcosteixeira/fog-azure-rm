@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Express Route Circuit model class for Network Service
       class ExpressRouteCircuitPeering < Fog::Model
         identity :name
@@ -60,7 +60,7 @@ module Fog
           requires :name, :resource_group, :circuit_name, :peering_type, :peer_asn, :primary_peer_address_prefix, :secondary_peer_address_prefix, :vlan_id
           requires :advertised_public_prefixes if peering_type.casecmp(MICROSOFT_PEERING) == 0
           circuit_peering = service.create_or_update_express_route_circuit_peering(express_route_circuit_peering_params)
-          merge_attributes(Fog::Network::AzureRM::ExpressRouteCircuitPeering.parse(circuit_peering))
+          merge_attributes(Fog::AzureRM::Network::ExpressRouteCircuitPeering.parse(circuit_peering))
         end
 
         def destroy

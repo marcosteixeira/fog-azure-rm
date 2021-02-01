@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Sql Server model for Server Service
       class SqlServer < Fog::Model
         identity :name
@@ -24,7 +24,7 @@ module Fog
         def save
           requires :name, :resource_group, :location, :version, :administrator_login, :administrator_login_password
           sql_server = service.create_or_update_sql_server(format_sql_server_params)
-          merge_attributes(Fog::Sql::AzureRM::SqlServer.parse(sql_server))
+          merge_attributes(Fog::AzureRM::Sql::SqlServer.parse(sql_server))
         end
 
         def destroy

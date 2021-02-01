@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # LoadBalancer model class for Network Service
       class LoadBalancer < Fog::Model
         identity :name
@@ -27,32 +27,32 @@ module Fog
 
           hash['frontend_ip_configurations'] = []
           load_balancer.frontend_ipconfigurations.each do |fic|
-            frontend_ip_configuration = Fog::Network::AzureRM::FrontendIPConfiguration.new
-            hash['frontend_ip_configurations'] << frontend_ip_configuration.merge_attributes(Fog::Network::AzureRM::FrontendIPConfiguration.parse(fic))
+            frontend_ip_configuration = Fog::AzureRM::Network::FrontendIPConfiguration.new
+            hash['frontend_ip_configurations'] << frontend_ip_configuration.merge_attributes(Fog::AzureRM::Network::FrontendIPConfiguration.parse(fic))
           end unless load_balancer.frontend_ipconfigurations.nil?
 
           hash['load_balancing_rules'] = []
           load_balancer.load_balancing_rules.each do |lbr|
-            load_balancing_rule = Fog::Network::AzureRM::LoadBalangcingRule.new
-            hash['load_balancing_rules'] << load_balancing_rule.merge_attributes(Fog::Network::AzureRM::LoadBalangcingRule.parse(lbr))
+            load_balancing_rule = Fog::AzureRM::Network::LoadBalangcingRule.new
+            hash['load_balancing_rules'] << load_balancing_rule.merge_attributes(Fog::AzureRM::Network::LoadBalangcingRule.parse(lbr))
           end unless load_balancer.load_balancing_rules.nil?
 
           hash['probes'] = []
           load_balancer.probes.each do |prb|
-            prob = Fog::Network::AzureRM::Probe.new
-            hash['probes'] << prob.merge_attributes(Fog::Network::AzureRM::Probe.parse(prb))
+            prob = Fog::AzureRM::Network::Probe.new
+            hash['probes'] << prob.merge_attributes(Fog::AzureRM::Network::Probe.parse(prb))
           end unless load_balancer.probes.nil?
 
           hash['inbound_nat_rules'] = []
           load_balancer.inbound_nat_rules.each do |inr|
-            inbound_nat_rule = Fog::Network::AzureRM::InboundNatRule.new
-            hash['inbound_nat_rules'] << inbound_nat_rule.merge_attributes(Fog::Network::AzureRM::InboundNatRule.parse(inr))
+            inbound_nat_rule = Fog::AzureRM::Network::InboundNatRule.new
+            hash['inbound_nat_rules'] << inbound_nat_rule.merge_attributes(Fog::AzureRM::Network::InboundNatRule.parse(inr))
           end unless load_balancer.inbound_nat_rules.nil?
 
           hash['inbound_nat_pools'] = []
           load_balancer.inbound_nat_pools.each do |inp|
-            inbound_nat_pool = Fog::Network::AzureRM::InboundNatPool.new
-            hash['inbound_nat_pools'] << inbound_nat_pool.merge_attributes(Fog::Network::AzureRM::InboundNatPool.parse(inp))
+            inbound_nat_pool = Fog::AzureRM::Network::InboundNatPool.new
+            hash['inbound_nat_pools'] << inbound_nat_pool.merge_attributes(Fog::AzureRM::Network::InboundNatPool.parse(inp))
           end unless load_balancer.inbound_nat_pools.nil?
 
           hash
@@ -69,7 +69,7 @@ module Fog
 
           load_balancer = service.create_load_balancer(name, location, resource_group, frontend_ip_configurations, backend_address_pool_names, load_balancing_rules, probes, inbound_nat_rules, inbound_nat_pools, tags)
 
-          merge_attributes(Fog::Network::AzureRM::LoadBalancer.parse(load_balancer))
+          merge_attributes(Fog::AzureRM::Network::LoadBalancer.parse(load_balancer))
         end
 
         def validate_load_balancing_rules(load_balancing_rules)

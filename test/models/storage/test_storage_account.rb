@@ -2,7 +2,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Storage Account Model
 class TestStorageAccount < Minitest::Test
   def setup
-    @service = Fog::Storage::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Storage.new(credentials)
     @storage_mgmt_client = @service.instance_variable_get(:@storage_mgmt_client)
     @storage_account = storage_account(@service)
     @standard_lrs_storage_account = standard_lrs(@service)
@@ -39,7 +39,7 @@ class TestStorageAccount < Minitest::Test
 
   def test_save_method_response
     @service.stub :create_storage_account, @storage_account_response do
-      assert_instance_of Fog::Storage::AzureRM::StorageAccount, @storage_account.save
+      assert_instance_of Fog::AzureRM::Storage::StorageAccount, @storage_account.save
     end
     @service.stub :create_storage_account, @storage_account_response do
       assert_raises RuntimeError do
@@ -60,7 +60,7 @@ class TestStorageAccount < Minitest::Test
 
   def test_update_method_response
     @service.stub :update_storage_account, @storage_account_response do
-      assert_instance_of Fog::Storage::AzureRM::StorageAccount, @storage_account.update({})
+      assert_instance_of Fog::AzureRM::Storage::StorageAccount, @storage_account.update({})
     end
   end
 

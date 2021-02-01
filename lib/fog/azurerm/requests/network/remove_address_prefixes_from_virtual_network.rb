@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def remove_address_prefixes_from_virtual_network(resource_group_name, virtual_network_name, address_prefixes)

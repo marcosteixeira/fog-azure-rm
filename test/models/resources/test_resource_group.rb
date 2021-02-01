@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Resource Group Model
 class TestResourceGroup < Minitest::Test
   def setup
-    @service = Fog::Resources::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Resources.new(credentials)
     client = @service.instance_variable_get(:@rmc)
     @resource_group = resource_group(@service)
     @response = ApiStub::Models::Resources::ResourceGroup.create_resource_group_response(client)
@@ -33,7 +33,7 @@ class TestResourceGroup < Minitest::Test
 
   def test_save_method_response
     @service.stub :create_resource_group, @response do
-      assert_instance_of Fog::Resources::AzureRM::ResourceGroup, @resource_group.save
+      assert_instance_of Fog::AzureRM::Resources::ResourceGroup, @resource_group.save
     end
   end
 

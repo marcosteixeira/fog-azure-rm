@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for LoadBalancer Model
 class TestLoadBalancer < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     @load_balancer = load_balancer(@service)
     network_client = @service.instance_variable_get(:@network_client)
     @response = ApiStub::Models::Network::LoadBalancer.create_load_balancer_response(network_client)
@@ -40,7 +40,7 @@ class TestLoadBalancer < Minitest::Test
 
   def test_save_method_response
     @service.stub :create_load_balancer, @response do
-      assert_instance_of Fog::Network::AzureRM::LoadBalancer, @load_balancer.save
+      assert_instance_of Fog::AzureRM::Network::LoadBalancer, @load_balancer.save
     end
   end
 

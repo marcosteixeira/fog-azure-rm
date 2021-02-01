@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # InboundNatRule model for Network Service
       class InboundNatRule < Fog::Model
         identity :name

@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Availability Set Model
 class TestAvailabilitySet < Minitest::Test
   def setup
-    @service = Fog::Compute::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Compute.new(credentials)
     @availability_set = availability_set(@service)
     compute_client = @service.instance_variable_get(:@compute_mgmt_client)
     @response = ApiStub::Models::Compute::AvailabilitySet.create_unmanaged_availability_set_response(compute_client)
@@ -39,7 +39,7 @@ class TestAvailabilitySet < Minitest::Test
 
   def test_save_method_response
     @service.stub :create_availability_set, @response do
-      assert_instance_of Fog::Compute::AzureRM::AvailabilitySet, @availability_set.save
+      assert_instance_of Fog::AzureRM::Compute::AvailabilitySet, @availability_set.save
     end
   end
 

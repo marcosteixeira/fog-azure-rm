@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class is giving implementation of create/save and
       # delete/destroy for Availability Set.
       class AvailabilitySet < Fog::Model
@@ -40,7 +40,7 @@ module Fog
           requires :resource_group
           # need to create the availability set
           as = service.create_availability_set(avail_set_params(platform_fault_domain_count, platform_update_domain_count, use_managed_disk))
-          hash = Fog::Compute::AzureRM::AvailabilitySet.parse(as)
+          hash = Fog::AzureRM::Compute::AvailabilitySet.parse(as)
           merge_attributes(hash)
         end
 

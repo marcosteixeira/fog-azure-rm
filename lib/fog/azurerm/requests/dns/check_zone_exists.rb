@@ -1,6 +1,6 @@
 module Fog
-  module DNS
-    class AzureRM
+  module AzureRM
+    class DNS
       # Real class for DNS Request
       class Real
         def check_zone_exists(resource_group, name)

@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Storage Container Model
 class TestFile < Minitest::Test
   def setup
-    @service = Fog::Storage::AzureRM.new(storage_account_credentials)
+    @service = Fog::AzureRM::Storage.new(storage_account_credentials)
     @directory = directory(@service)
     @file = file(@service)
     @raw_cloud_blob = storage_blob
@@ -173,7 +173,7 @@ class TestFile < Minitest::Test
       @service.stub :copy_blob, [copy_id, copy_status] do
         @service.stub :wait_blob_copy_operation_to_finish, true do
           target_file = @file.copy('target_container', 'target_blob')
-          assert_instance_of Fog::Storage::AzureRM::File, target_file
+          assert_instance_of Fog::AzureRM::Storage::File, target_file
         end
       end
     end

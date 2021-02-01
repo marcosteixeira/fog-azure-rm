@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Express Route Circuit Authorization Request
       class Real
         def delete_express_route_circuit_authorization(resource_group_name, circuit_name, authorization_name)

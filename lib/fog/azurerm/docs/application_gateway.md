@@ -14,7 +14,7 @@ require 'fog/azurerm'
 Next, create a connection to the Application Gateway Service:
 
 ```ruby
-fog_application_gateway_service = Fog::ApplicationGateway::AzureRM.new(
+fog_application_gateway_service = Fog::AzureRM::ApplicationGateway.new(
       tenant_id:        '<Tenant Id>',                                                           # Tenant Id of Azure Active Directory Application
       client_id:        '<Client Id>',                                                           # Client Id of Azure Active Directory Application
       client_secret:    '<Client Secret>',                                                       # Client Secret of Azure Active Directory Application

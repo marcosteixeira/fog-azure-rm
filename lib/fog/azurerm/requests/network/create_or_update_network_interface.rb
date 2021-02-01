@@ -1,7 +1,7 @@
 
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def create_or_update_network_interface(resource_group_name, name, location, subnet_id, public_ip_address_id, network_security_group_id, ip_config_name, private_ip_allocation_method, private_ip_address, load_balancer_backend_address_pools_ids, load_balancer_inbound_nat_rules_ids, tags, enable_accelerated_networking = false, async = false)

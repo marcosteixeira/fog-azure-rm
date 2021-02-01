@@ -15,7 +15,7 @@ require 'fog/azurerm'
 Next, create a connection to the Compute Service:
 
 ```ruby
-fog_compute_service = Fog::Compute::AzureRM.new(
+fog_compute_service = Fog::AzureRM::Compute.new(
       tenant_id:        '<Tenant Id>',                                                             # Tenant Id of Azure Active Directory Application
       client_id:        '<Client Id>',                                                             # Client Id of Azure Active Directory Application
       client_secret:    '<Client Secret>',                                                         # Client Secret of Azure Active Directory Application

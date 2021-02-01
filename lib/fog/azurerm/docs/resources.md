@@ -15,7 +15,7 @@ require 'fog/azurerm'
 Next, create a connection to the Resources Service:
 
 ```ruby
-fog_resources_service = Fog::Resources::AzureRM.new(
+fog_resources_service = Fog::AzureRM::Resources.new(
       tenant_id:        '<Tenant Id>',                                                         # Tenant Id of Azure Active Directory Application
       client_id:        '<Client Id>',                                                         # Client Id of Azure Active Directory Application
       client_secret:    '<Client Secret>',                                                     # Client Secret of Azure Active Directory Application

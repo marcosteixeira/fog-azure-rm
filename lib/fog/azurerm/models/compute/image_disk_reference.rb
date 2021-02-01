@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # ImageReference model for Compute Service
       class ImageDiskReference < Fog::Model
         attribute :id

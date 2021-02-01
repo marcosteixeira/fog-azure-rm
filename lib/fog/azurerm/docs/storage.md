@@ -15,7 +15,7 @@ require 'fog/azurerm'
 Next, create a connection to the Storage Service:
 
 ```ruby
-fog_storage_service = Fog::Storage::AzureRM.new(
+fog_storage_service = Fog::AzureRM::Storage.new(
   tenant_id: '<Tenant Id>',                                                          # Tenant Id of Azure Active Directory Application
   client_id:    '<Client Id>',                                                       # Client Id of Azure Active Directory Application
   client_secret: '<Client Secret>',                                                  # Client Secret of Azure Active Directory Application
@@ -29,7 +29,7 @@ fog_storage_service = Fog::Storage::AzureRM.new(
 If you only want to manage the storage accounts, you can create the connection without the storage account information:
 
 ```ruby
-fog_storage_service = Fog::Storage::AzureRM.new(
+fog_storage_service = Fog::AzureRM::Storage.new(
   tenant_id:        '<Tenant Id>',                                                         # Tenant Id of Azure Active Directory Application
   client_id:        '<Client Id>',                                                         # Client Id of Azure Active Directory Application
   client_secret:    '<Client Secret>',                                                     # Client Secret of Azure Active Directory Application
@@ -41,7 +41,7 @@ fog_storage_service = Fog::Storage::AzureRM.new(
 If you only want to manage the storage data, you can create the connection without the Azure subscription information:
 
 ```ruby
-fog_storage_service = Fog::Storage::AzureRM.new(
+fog_storage_service = Fog::AzureRM::Storage.new(
   azure_storage_account_name:   '<Storage Account Name>',                                             # Name of an Azure Storage Account
   azure_storage_access_key:     '<Storage Account Key>',                                              # Key of an Azure Storage Account
   environment:                  '<AzureCloud/AzureChinaCloud/AzureUSGovernment/AzureGermanCloud>'     # Azure cloud environment. Default is AzureCloud.

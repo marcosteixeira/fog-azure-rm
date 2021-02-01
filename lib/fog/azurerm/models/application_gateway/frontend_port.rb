@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # Frontenf Port model class for Application Gateway Service
       class FrontendPort < Fog::Model
         identity :name

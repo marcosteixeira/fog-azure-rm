@@ -1,6 +1,6 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # Provider model class
       class Provider < Fog::Model
         attribute :id
@@ -16,8 +16,8 @@ module Fog
 
           hash['resource_types'] = []
           provider.resource_types.each do |provider_resource_type|
-            provider_resource_type_obj = Fog::Resources::AzureRM::ProviderResourceType.new
-            hash['resource_types'] << provider_resource_type_obj.merge_attributes(Fog::Resources::AzureRM::ProviderResourceType.parse(provider_resource_type))
+            provider_resource_type_obj = Fog::AzureRM::Resources::ProviderResourceType.new
+            hash['resource_types'] << provider_resource_type_obj.merge_attributes(Fog::AzureRM::Resources::ProviderResourceType.parse(provider_resource_type))
           end
           hash
         end

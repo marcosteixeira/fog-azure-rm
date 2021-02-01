@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # Real class for Compute Request
       class Real
         def grant_access_to_managed_disk(resource_group_name, disk_name, access_type, duration_in_sec)

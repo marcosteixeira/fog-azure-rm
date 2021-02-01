@@ -1,6 +1,6 @@
 module Fog
-  module KeyVault
-    class AzureRM
+  module AzureRM
+    class KeyVault
       # Vault model for KeyVault Service
       class Vault < Fog::Model
         identity :name
@@ -33,8 +33,8 @@ module Fog
             vault_hash['access_policies'] = []
             unless vault_properties.access_policies.nil?
               vault_properties.access_policies.each do |access_policy|
-                access_policy_entry = Fog::KeyVault::AzureRM::AccessPolicyEntry.new
-                vault_hash['access_policies'] << access_policy_entry.merge_attributes(Fog::KeyVault::AzureRM::AccessPolicyEntry.parse(access_policy))
+                access_policy_entry = Fog::AzureRM::KeyVault::AccessPolicyEntry.new
+                vault_hash['access_policies'] << access_policy_entry.merge_attributes(Fog::AzureRM::KeyVault::AccessPolicyEntry.parse(access_policy))
               end
             end
 
@@ -51,7 +51,7 @@ module Fog
         def save
           requires :name, :resource_group, :location, :tenant_id, :sku_family, :sku_name, :access_policies
           vault = service.create_or_update_vault(vault_hash)
-          merge_attributes(Fog::KeyVault::AzureRM::Vault.parse(vault))
+          merge_attributes(Fog::AzureRM::KeyVault::Vault.parse(vault))
         end
 
         def destroy

@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Create Traffic Manager End Point
 class TestCreateTrafficManagerEndPoint < Minitest::Test
   def setup
-    @service = Fog::TrafficManager::AzureRM.new(credentials)
+    @service = Fog::AzureRM::TrafficManager.new(credentials)
     @traffic_manager_client = @service.instance_variable_get(:@traffic_mgmt_client)
     @end_points = @traffic_manager_client.endpoints
     @endpoint_hash = ApiStub::Requests::TrafficManager::TrafficManagerEndPoint.endpoint_hash

@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Express Route Circuit Peering Request
       class Real
         def get_express_route_circuit_peering(resource_group_name, peering_name, circuit_name)

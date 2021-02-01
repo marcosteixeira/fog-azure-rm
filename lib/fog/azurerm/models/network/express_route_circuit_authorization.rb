@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Express Route Circuit Authorization model class for Network Service
       class ExpressRouteCircuitAuthorization < Fog::Model
         identity :name
@@ -23,7 +23,7 @@ module Fog
         def save
           requires :name, :resource_group, :circuit_name
           circuit_authorization = service.create_or_update_express_route_circuit_authorization(express_route_circuit_authorization_params)
-          merge_attributes(Fog::Network::AzureRM::ExpressRouteCircuitAuthorization.parse(circuit_authorization))
+          merge_attributes(Fog::AzureRM::Network::ExpressRouteCircuitAuthorization.parse(circuit_authorization))
         end
 
         def destroy

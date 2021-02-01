@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # EncryptionSettings model for Compute Service
       class EncryptionSettings < Fog::Model
         attribute :key_url

@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Real class for Sql Server Request
       class Real
         def create_or_update_sql_server(server_hash)

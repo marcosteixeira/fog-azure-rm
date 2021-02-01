@@ -3,8 +3,8 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for ApplicationGateway Collection
 class TestGateways < Minitest::Test
   def setup
-    @service = Fog::ApplicationGateway::AzureRM.new(credentials)
-    @gateways = Fog::ApplicationGateway::AzureRM::Gateways.new(resource_group: 'fog-test-rg', service: @service)
+    @service = Fog::AzureRM::ApplicationGateway.new(credentials)
+    @gateways = Fog::AzureRM::ApplicationGateway::Gateways.new(resource_group: 'fog-test-rg', service: @service)
     @gateway_client = @service.instance_variable_get(:@network_client)
     @response = ApiStub::Models::ApplicationGateway::Gateway.create_application_gateway_response(@gateway_client)
   end
@@ -27,17 +27,17 @@ class TestGateways < Minitest::Test
   def test_all_method_response
     response = [@response]
     @service.stub :list_application_gateways, response do
-      assert_instance_of Fog::ApplicationGateway::AzureRM::Gateways, @gateways.all
+      assert_instance_of Fog::AzureRM::ApplicationGateway::Gateways, @gateways.all
       assert @gateways.all.size >= 1
       @gateways.all.each do |application_gateway|
-        assert_instance_of Fog::ApplicationGateway::AzureRM::Gateway, application_gateway
+        assert_instance_of Fog::AzureRM::ApplicationGateway::Gateway, application_gateway
       end
     end
   end
 
   def test_get_method_response
     @service.stub :get_application_gateway, @response do
-      assert_instance_of Fog::ApplicationGateway::AzureRM::Gateway, @gateways.get('fog-test-rg', 'gateway')
+      assert_instance_of Fog::AzureRM::ApplicationGateway::Gateway, @gateways.get('fog-test-rg', 'gateway')
     end
   end
 

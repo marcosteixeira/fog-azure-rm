@@ -14,7 +14,7 @@ require 'fog/azurerm'
 Next, create a connection to the Traffic Manager Service:
 
 ```ruby
-fog_traffic_manager_service = Fog::TrafficManager::AzureRM.new(
+fog_traffic_manager_service = Fog::AzureRM::TrafficManager.new(
       tenant_id:        '<Tenant Id>',                                                          # Tenant Id of Azure Active Directory Application
       client_id:        '<Client Id>',                                                          # Client Id of Azure Active Directory Application
       client_secret:    '<Client Secret>',                                                      # Client Secret of Azure Active Directory Application

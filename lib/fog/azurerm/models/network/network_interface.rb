@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # NetworkInterface model class for Network Service
       class NetworkInterface < Fog::Model
         identity :name
@@ -72,7 +72,7 @@ module Fog
           if async
             nic_response
           else
-            merge_attributes(Fog::Network::AzureRM::NetworkInterface.parse(nic_response))
+            merge_attributes(Fog::AzureRM::Network::NetworkInterface.parse(nic_response))
           end
         end
 
@@ -80,37 +80,37 @@ module Fog
           validate_update_attributes!(updated_attributes)
           merge_attributes(updated_attributes)
           nic = service.create_or_update_network_interface(resource_group, name, location, subnet_id, public_ip_address_id, network_security_group_id, ip_configuration_name, private_ip_allocation_method, private_ip_address)
-          merge_attributes(Fog::Network::AzureRM::NetworkInterface.parse(nic))
+          merge_attributes(Fog::AzureRM::Network::NetworkInterface.parse(nic))
         end
 
         def attach_subnet(subnet_id)
           raise 'Subnet ID can not be nil.' if subnet_id.nil?
           nic = service.attach_resource_to_nic(resource_group, name, SUBNET, subnet_id)
-          merge_attributes(Fog::Network::AzureRM::NetworkInterface.parse(nic))
+          merge_attributes(Fog::AzureRM::Network::NetworkInterface.parse(nic))
         end
 
         def attach_public_ip(public_ip_id)
           raise 'Public-IP ID can not be nil.' if public_ip_id.nil?
           nic = service.attach_resource_to_nic(resource_group, name, PUBLIC_IP, public_ip_id)
-          merge_attributes(Fog::Network::AzureRM::NetworkInterface.parse(nic))
+          merge_attributes(Fog::AzureRM::Network::NetworkInterface.parse(nic))
         end
 
         def attach_network_security_group(network_security_group_id)
           raise 'Network-Security-Group ID can not be nil.' if network_security_group_id.nil?
           nic = service.attach_resource_to_nic(resource_group, name, NETWORK_SECURITY_GROUP, network_security_group_id)
-          merge_attributes(Fog::Network::AzureRM::NetworkInterface.parse(nic))
+          merge_attributes(Fog::AzureRM::Network::NetworkInterface.parse(nic))
         end
 
         def detach_public_ip
           raise "Error detaching Public IP. No Public IP is attached to Network Interface #{name}" if public_ip_address_id.nil?
           nic = service.detach_resource_from_nic(resource_group, name, PUBLIC_IP)
-          merge_attributes(Fog::Network::AzureRM::NetworkInterface.parse(nic))
+          merge_attributes(Fog::AzureRM::Network::NetworkInterface.parse(nic))
         end
 
         def detach_network_security_group
           raise "Error detaching Network Security Group. No Security Group is attached to Network Interface #{name}" if network_security_group_id.nil?
           nic = service.detach_resource_from_nic(resource_group, name, NETWORK_SECURITY_GROUP)
-          merge_attributes(Fog::Network::AzureRM::NetworkInterface.parse(nic))
+          merge_attributes(Fog::AzureRM::Network::NetworkInterface.parse(nic))
         end
 
         def destroy

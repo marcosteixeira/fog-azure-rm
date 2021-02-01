@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Get Virtual Machine Request
 class TestGetVirtualMachine < Minitest::Test
   def setup
-    @service = Fog::Compute::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Compute.new(credentials)
     @compute_client = @service.instance_variable_get(:@compute_mgmt_client)
     @virtual_machines = @compute_client.virtual_machines
   end

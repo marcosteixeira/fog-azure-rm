@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Server Model
 class TestServer < Minitest::Test
   def setup
-    @service = Fog::Compute::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Compute.new(credentials)
     @server = server(@service)
     @compute_client = @service.instance_variable_get(:@compute_mgmt_client)
   end
@@ -71,7 +71,7 @@ class TestServer < Minitest::Test
     response = ApiStub::Models::Compute::Server.create_linux_virtual_machine_response(@compute_client)
     @service.stub :create_virtual_machine, response do
       @service.stub :get_virtual_machine, response do
-        assert_instance_of Fog::Compute::AzureRM::Server, @server.save
+        assert_instance_of Fog::AzureRM::Compute::Server, @server.save
       end
     end
 
@@ -86,7 +86,7 @@ class TestServer < Minitest::Test
     response = ApiStub::Models::Compute::Server.create_windows_virtual_machine_response(@compute_client)
     @service.stub :create_virtual_machine, response do
       @service.stub :get_virtual_machine, response do
-        assert_instance_of Fog::Compute::AzureRM::Server, @server.save
+        assert_instance_of Fog::AzureRM::Compute::Server, @server.save
         refute @server.save.disable_password_authentication
       end
     end
@@ -190,7 +190,7 @@ class TestServer < Minitest::Test
   def test_attach_data_disk_response
     response = ApiStub::Models::Compute::Server.attach_data_disk_response(@compute_client)
     @service.stub :attach_data_disk_to_vm, response do
-      assert_instance_of Fog::Compute::AzureRM::Server, @server.attach_data_disk('disk1', '10', 'mystorage1')
+      assert_instance_of Fog::AzureRM::Compute::Server, @server.attach_data_disk('disk1', '10', 'mystorage1')
     end
 
     async_response = Concurrent::Promise.execute { 10 }
@@ -202,7 +202,7 @@ class TestServer < Minitest::Test
   def test_detach_data_disk_response
     response = ApiStub::Models::Compute::Server.create_linux_virtual_machine_response(@compute_client)
     @service.stub :detach_data_disk_from_vm, response do
-      assert_instance_of Fog::Compute::AzureRM::Server, @server.detach_data_disk('disk1')
+      assert_instance_of Fog::AzureRM::Compute::Server, @server.detach_data_disk('disk1')
     end
 
     async_response = Concurrent::Promise.execute { 10 }
@@ -214,13 +214,13 @@ class TestServer < Minitest::Test
   def test_attach_managed_disk_response
     response = ApiStub::Models::Compute::Server.attach_managed_disk_response(@compute_client)
     @service.stub :attach_data_disk_to_vm, response do
-      assert_instance_of Fog::Compute::AzureRM::Server, @server.attach_managed_disk('disk_name', 'resoure_group')
+      assert_instance_of Fog::AzureRM::Compute::Server, @server.attach_managed_disk('disk_name', 'resoure_group')
     end
     @service.stub :attach_data_disk_to_vm, response do
-      assert_instance_of Fog::Compute::AzureRM::Server, @server.attach_managed_disk('disk_name', 'resoure_group', false, 'ReadOnly')
+      assert_instance_of Fog::AzureRM::Compute::Server, @server.attach_managed_disk('disk_name', 'resoure_group', false, 'ReadOnly')
     end
     @service.stub :attach_data_disk_to_vm, response do
-      assert_instance_of Fog::Compute::AzureRM::Server, @server.attach_managed_disk('disk_name', 'resoure_group', false, 'ReadWrite')
+      assert_instance_of Fog::AzureRM::Compute::Server, @server.attach_managed_disk('disk_name', 'resoure_group', false, 'ReadWrite')
     end
 
     async_response = Concurrent::Promise.execute { 10 }
@@ -232,7 +232,7 @@ class TestServer < Minitest::Test
   def test_detach_managed_disk_response
     response = ApiStub::Models::Compute::Server.create_linux_virtual_machine_response(@compute_client)
     @service.stub :detach_data_disk_from_vm, response do
-      assert_instance_of Fog::Compute::AzureRM::Server, @server.detach_managed_disk('managed_disk_name')
+      assert_instance_of Fog::AzureRM::Compute::Server, @server.detach_managed_disk('managed_disk_name')
     end
 
     async_response = Concurrent::Promise.execute { 10 }

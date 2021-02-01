@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Vpn Client Root Certificate model class for Network Service
       class VpnClientRootCertificate < Fog::Model
         attribute :name

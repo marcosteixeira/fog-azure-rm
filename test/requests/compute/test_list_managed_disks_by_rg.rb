@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for List Managed Disks Request
 class TestListManagedDisksByRG < Minitest::Test
   def setup
-    @service = Fog::Compute::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Compute.new(credentials)
     @client = @service.instance_variable_get(:@compute_mgmt_client)
     @managed_disks = @client.disks
   end

@@ -1,17 +1,17 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # This class is giving implementation of all/list and get.
       class AzureResources < Fog::Collection
         attribute :tag_name
         attribute :tag_value
-        model Fog::Resources::AzureRM::AzureResource
+        model Fog::AzureRM::Resources::AzureResource
 
         def all
           unless tag_name.nil? && tag_value.nil?
             resources = []
             service.list_tagged_resources(tag_name, tag_value).each do |resource|
-              resources << Fog::Resources::AzureRM::AzureResource.parse(resource)
+              resources << Fog::AzureRM::Resources::AzureResource.parse(resource)
             end
             resources.inspect
             return load(resources)
@@ -30,7 +30,7 @@ module Fog
         def list_resources_in_resource_group(resource_group_name)
           resources = []
           service.list_resources_in_resource_group(resource_group_name).each do |resource|
-            resources.push(Fog::Resources::AzureRM::AzureResource.parse(resource))
+            resources.push(Fog::AzureRM::Resources::AzureResource.parse(resource))
           end
           load(resources)
         end

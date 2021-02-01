@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Sql Server model for Server Firewall Rule Service
       class FirewallRule < Fog::Model
         identity :name
@@ -24,7 +24,7 @@ module Fog
         def save
           requires :resource_group, :server_name, :name, :start_ip, :end_ip
           firewall_rule = service.create_or_update_firewall_rule(format_firewall_params)
-          merge_attributes(Fog::Sql::AzureRM::FirewallRule.parse(firewall_rule))
+          merge_attributes(Fog::AzureRM::Sql::FirewallRule.parse(firewall_rule))
         end
 
         def destroy

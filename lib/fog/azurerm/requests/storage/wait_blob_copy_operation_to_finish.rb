@@ -1,6 +1,6 @@
 module Fog
-  module Storage
-    class AzureRM
+  module AzureRM
+    class Storage
       # This class provides the actual implementation for service calls.
       class Real
         def wait_blob_copy_operation_to_finish(container_name, blob_name, copy_id, copy_status, timeout = nil)

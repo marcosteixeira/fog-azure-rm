@@ -3,8 +3,8 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for ExpressRouteCircuitAuthorizations Collection
 class TestExpressRouteCircuitAuthorizations < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
-    @circuit_authorizations = Fog::Network::AzureRM::ExpressRouteCircuitAuthorizations.new(resource_group: 'fog-test-rg', circuit_name: 'testCircuit', service: @service)
+    @service = Fog::AzureRM::Network.new(credentials)
+    @circuit_authorizations = Fog::AzureRM::Network::ExpressRouteCircuitAuthorizations.new(resource_group: 'fog-test-rg', circuit_name: 'testCircuit', service: @service)
     @network_client = @service.instance_variable_get(:@network_client)
   end
 
@@ -27,10 +27,10 @@ class TestExpressRouteCircuitAuthorizations < Minitest::Test
   def test_all_method_response
     response = [ApiStub::Models::Network::ExpressRouteCircuitAuthorization.create_express_route_circuit_authorization_response(@network_client)]
     @service.stub :list_express_route_circuit_authorizations, response do
-      assert_instance_of Fog::Network::AzureRM::ExpressRouteCircuitAuthorizations, @circuit_authorizations.all
+      assert_instance_of Fog::AzureRM::Network::ExpressRouteCircuitAuthorizations, @circuit_authorizations.all
       assert @circuit_authorizations.all.size >= 1
       @circuit_authorizations.all.each do |circuit_authorization|
-        assert_instance_of Fog::Network::AzureRM::ExpressRouteCircuitAuthorization, circuit_authorization
+        assert_instance_of Fog::AzureRM::Network::ExpressRouteCircuitAuthorization, circuit_authorization
       end
     end
   end
@@ -38,7 +38,7 @@ class TestExpressRouteCircuitAuthorizations < Minitest::Test
   def test_get_method_response
     response = ApiStub::Models::Network::ExpressRouteCircuitAuthorization.create_express_route_circuit_authorization_response(@network_client)
     @service.stub :get_express_route_circuit_authorization, response do
-      assert_instance_of Fog::Network::AzureRM::ExpressRouteCircuitAuthorization, @circuit_authorizations.get('HaiderRG', 'testCircuit', 'auth-name')
+      assert_instance_of Fog::AzureRM::Network::ExpressRouteCircuitAuthorization, @circuit_authorizations.get('HaiderRG', 'testCircuit', 'auth-name')
     end
   end
 

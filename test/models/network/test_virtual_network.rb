@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for VirtualNetwork Model
 class TestVirtualNetwork < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     @virtual_network = virtual_network(@service)
     @network_client = @service.instance_variable_get(:@network_client)
     @response = ApiStub::Models::Network::VirtualNetwork.create_virtual_network_response(@network_client)
@@ -44,31 +44,31 @@ class TestVirtualNetwork < Minitest::Test
 
   def test_save_method_response
     @service.stub :create_or_update_virtual_network, @response do
-      assert_instance_of Fog::Network::AzureRM::VirtualNetwork, @virtual_network.save
+      assert_instance_of Fog::AzureRM::Network::VirtualNetwork, @virtual_network.save
     end
   end
 
   def test_add_dns_servers_method_response
     @service.stub :add_dns_servers_in_virtual_network, @response do
-      assert_instance_of Fog::Network::AzureRM::VirtualNetwork, @virtual_network.add_dns_servers(['10.3.0.0', '10.4.0.0'])
+      assert_instance_of Fog::AzureRM::Network::VirtualNetwork, @virtual_network.add_dns_servers(['10.3.0.0', '10.4.0.0'])
     end
   end
 
   def test_remove_dns_servers_method_response
     @service.stub :remove_dns_servers_from_virtual_network, @response do
-      assert_instance_of Fog::Network::AzureRM::VirtualNetwork, @virtual_network.remove_dns_servers(['10.3.0.0', '10.4.0.0'])
+      assert_instance_of Fog::AzureRM::Network::VirtualNetwork, @virtual_network.remove_dns_servers(['10.3.0.0', '10.4.0.0'])
     end
   end
 
   def test_add_address_prefixes_method_response
     @service.stub :add_address_prefixes_in_virtual_network, @response do
-      assert_instance_of Fog::Network::AzureRM::VirtualNetwork, @virtual_network.add_address_prefixes(['10.0.0.0/16'])
+      assert_instance_of Fog::AzureRM::Network::VirtualNetwork, @virtual_network.add_address_prefixes(['10.0.0.0/16'])
     end
   end
 
   def test_remove_address_prefixes_method_response
     @service.stub :remove_address_prefixes_from_virtual_network, @response do
-      assert_instance_of Fog::Network::AzureRM::VirtualNetwork, @virtual_network.remove_address_prefixes(['10.0.0.0/16'])
+      assert_instance_of Fog::AzureRM::Network::VirtualNetwork, @virtual_network.remove_address_prefixes(['10.0.0.0/16'])
     end
   end
 
@@ -78,13 +78,13 @@ class TestVirtualNetwork < Minitest::Test
       address_prefix: '10.0.0.0/16'
     }]
     @service.stub :add_subnets_in_virtual_network, @response do
-      assert_instance_of Fog::Network::AzureRM::VirtualNetwork, @virtual_network.add_subnets(subnets)
+      assert_instance_of Fog::AzureRM::Network::VirtualNetwork, @virtual_network.add_subnets(subnets)
     end
   end
 
   def test_remove_subnets_method_response
     @service.stub :remove_subnets_from_virtual_network, @response do
-      assert_instance_of Fog::Network::AzureRM::VirtualNetwork, @virtual_network.remove_subnets(['test-subnet'])
+      assert_instance_of Fog::AzureRM::Network::VirtualNetwork, @virtual_network.remove_subnets(['test-subnet'])
     end
   end
 
@@ -94,7 +94,7 @@ class TestVirtualNetwork < Minitest::Test
       address_prefix: '10.0.0.0/16'
     }]
     @service.stub :create_or_update_virtual_network, @response do
-      assert_instance_of Fog::Network::AzureRM::VirtualNetwork, @virtual_network.update(subnets: subnets, address_prefixes: ['10.0.0.0/16'])
+      assert_instance_of Fog::AzureRM::Network::VirtualNetwork, @virtual_network.update(subnets: subnets, address_prefixes: ['10.0.0.0/16'])
     end
   end
 

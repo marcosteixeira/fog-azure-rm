@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Database Model
 class TestDatabase < Minitest::Test
   def setup
-    @service = Fog::Sql::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Sql.new(credentials)
     @database = database(@service)
     @database_client = @service.instance_variable_get(:@sql_mgmt_client)
   end
@@ -50,7 +50,7 @@ class TestDatabase < Minitest::Test
   def test_save_method_response
     create_response = ApiStub::Models::Sql::SqlDatabase.create_database(@database_client)
     @service.stub :create_or_update_database, create_response do
-      assert_instance_of Fog::Sql::AzureRM::SqlDatabase, @database.save
+      assert_instance_of Fog::AzureRM::Sql::SqlDatabase, @database.save
     end
   end
 

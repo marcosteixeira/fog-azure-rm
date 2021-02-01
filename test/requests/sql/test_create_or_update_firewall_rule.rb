@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Create Sql Server Firewall Rule
 class TestCreateOrUpdateFirewallRule < Minitest::Test
   def setup
-    @service = Fog::Sql::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Sql.new(credentials)
     @sql_manager_client = @service.instance_variable_get(:@sql_mgmt_client)
     @firewall_rule = @sql_manager_client.servers
     @data_hash = ApiStub::Requests::Sql::FirewallRule.firewall_rule_hash

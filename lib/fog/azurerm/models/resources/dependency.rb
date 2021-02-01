@@ -1,6 +1,6 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # Dependency model class
       class Dependency < Fog::Model
         attribute :id
@@ -16,8 +16,8 @@ module Fog
 
           hash['depends_on'] = []
           dependency.depends_on.each do |sub_dependency|
-            dependency_obj = Fog::Resources::AzureRM::Dependency.new
-            hash['depends_on'] << dependency_obj.merge_attributes(Fog::Resources::AzureRM::Dependency.parse(sub_dependency))
+            dependency_obj = Fog::AzureRM::Resources::Dependency.new
+            hash['depends_on'] << dependency_obj.merge_attributes(Fog::AzureRM::Resources::Dependency.parse(sub_dependency))
           end if dependency.respond_to?('depends_on')
           hash
         end

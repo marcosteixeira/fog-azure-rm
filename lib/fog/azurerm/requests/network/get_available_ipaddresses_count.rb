@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def get_available_ipaddresses_count(subnet_name, address_prefix, ip_configurations_ids, express_route_enabled)

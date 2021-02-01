@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Get Resource Group Request
 class TestGetResourceGroup < Minitest::Test
   def setup
-    @service = Fog::Resources::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Resources.new(credentials)
     @rmc_client = @service.instance_variable_get(:@rmc)
     @resource_groups = @rmc_client.resource_groups
   end

@@ -1,6 +1,6 @@
 module Fog
-  module KeyVault
-    class AzureRM
+  module AzureRM
+    class KeyVault
       # AccessPolicyEntry Model for Storage Service
       class AccessPolicyEntry < Fog::Model
         identity  :object_id

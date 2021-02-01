@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Load-Balancer Request
       class Real
         def get_load_balancer(resource_group_name, load_balancer_name)

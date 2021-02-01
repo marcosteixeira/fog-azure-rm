@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def create_or_update_network_security_group(resource_group_name, security_group_name, location, security_rules, tags)

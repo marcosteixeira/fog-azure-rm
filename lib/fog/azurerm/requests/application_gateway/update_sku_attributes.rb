@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # Real class for Application Gateway Request
       class Real
         def update_sku_attributes(gateway_params, sku_name, sku_capacity)

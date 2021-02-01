@@ -1,6 +1,6 @@
 module Fog
-  module TrafficManager
-    class AzureRM
+  module AzureRM
+    class TrafficManager
       # This class provides the actual implementation for service call.
       class Real
         def create_or_update_traffic_manager_profile(profile_hash)

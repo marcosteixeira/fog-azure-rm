@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Security rule Request
       class Real
         def get_network_security_rule(resource_group_name, network_security_group_name, security_rule_name)

@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for NetworkInterface Model
 class TestNetworkInterface < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     @network_interface = network_interface(@service)
     network_client = @service.instance_variable_get(:@network_client)
     @response = ApiStub::Models::Network::NetworkInterface.create_network_interface_response(network_client)
@@ -55,7 +55,7 @@ class TestNetworkInterface < Minitest::Test
 
   def test_save_method_response
     @service.stub :create_or_update_network_interface, @response do
-      assert_instance_of Fog::Network::AzureRM::NetworkInterface, @network_interface.save
+      assert_instance_of Fog::AzureRM::Network::NetworkInterface, @network_interface.save
     end
   end
 
@@ -68,31 +68,31 @@ class TestNetworkInterface < Minitest::Test
 
   def test_attach_subnet
     @service.stub :attach_resource_to_nic, @response do
-      assert_instance_of Fog::Network::AzureRM::NetworkInterface, @network_interface.attach_subnet('<subnet-id>')
+      assert_instance_of Fog::AzureRM::Network::NetworkInterface, @network_interface.attach_subnet('<subnet-id>')
     end
   end
 
   def test_attach_public_ip
     @service.stub :attach_resource_to_nic, @response do
-      assert_instance_of Fog::Network::AzureRM::NetworkInterface, @network_interface.attach_public_ip('<public-ip-id>')
+      assert_instance_of Fog::AzureRM::Network::NetworkInterface, @network_interface.attach_public_ip('<public-ip-id>')
     end
   end
 
   def test_attach_network_security_group
     @service.stub :attach_resource_to_nic, @response do
-      assert_instance_of Fog::Network::AzureRM::NetworkInterface, @network_interface.attach_network_security_group('<nsg-id>')
+      assert_instance_of Fog::AzureRM::Network::NetworkInterface, @network_interface.attach_network_security_group('<nsg-id>')
     end
   end
 
   def test_detach_public_ip
     @service.stub :detach_resource_from_nic, @response do
-      assert_instance_of Fog::Network::AzureRM::NetworkInterface, @network_interface.detach_public_ip
+      assert_instance_of Fog::AzureRM::Network::NetworkInterface, @network_interface.detach_public_ip
     end
   end
 
   def test_detach_network_security_group
     @service.stub :detach_resource_from_nic, @response do
-      assert_instance_of Fog::Network::AzureRM::NetworkInterface, @network_interface.detach_network_security_group
+      assert_instance_of Fog::AzureRM::Network::NetworkInterface, @network_interface.detach_network_security_group
     end
   end
 end

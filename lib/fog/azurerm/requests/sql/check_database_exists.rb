@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Mock class for Sql Request
       class Real
         def check_database_exists(resource_group, server_name, name)

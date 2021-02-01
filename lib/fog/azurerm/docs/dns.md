@@ -15,7 +15,7 @@ require 'fog/azurerm'
 Next, create a connection to the DNS Service:
 
 ```ruby
-fog_dns_service = Fog::DNS::AzureRM.new(
+fog_dns_service = Fog::AzureRM::DNS.new(
         tenant_id:       '<Tenant Id>',                                                           # Tenant Id of Azure Active Directory Application
         client_id:       '<Client Id>',                                                           # Client Id of Azure Active Directory Application
         client_secret:   '<Client Secret>',                                                       # Client Secret of Azure Active Directory Application

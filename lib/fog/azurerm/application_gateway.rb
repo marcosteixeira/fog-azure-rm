@@ -1,7 +1,7 @@
 module Fog
-  module ApplicationGateway
+  module AzureRM
     # Fog Service Class for AzureRM
-    class AzureRM < Fog::Service
+    class ApplicationGateway < Fog::Service
       requires :tenant_id
       requires :client_id
       requires :client_secret
@@ -59,7 +59,7 @@ module Fog
 
           options[:environment] = 'AzureCloud' if options[:environment].nil?
 
-          credentials = Fog::Credentials::AzureRM.get_credentials(options[:tenant_id], options[:client_id], options[:client_secret], options[:environment])
+          credentials = Fog::AzureRM::Credentials.get_credentials(options[:tenant_id], options[:client_id], options[:client_secret], options[:environment])
           @network_client = ::Azure::ARM::Network::NetworkManagementClient.new(credentials, resource_manager_endpoint_url(options[:environment]))
           @network_client.subscription_id = options[:subscription_id]
           @network_client.add_user_agent_information(telemetry)

@@ -1,6 +1,6 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # This class provides the actual implementation for service calls.
       class Real
         def delete_resource_tag(resource_id, tag_name, tag_value, api_version = API_VERSION)

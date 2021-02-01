@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       # Backend Address Pool model class for Application Gateway Service
       class BackendAddressPool < Fog::Model
         identity :name

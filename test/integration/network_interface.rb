@@ -8,14 +8,14 @@ require 'yaml'
 
 azure_credentials = YAML.load_file(File.expand_path('credentials/azure.yml', __dir__))
 
-rs = Fog::Resources::AzureRM.new(
+rs = Fog::AzureRM::Resources.new(
   tenant_id: azure_credentials['tenant_id'],
   client_id: azure_credentials['client_id'],
   client_secret: azure_credentials['client_secret'],
   subscription_id: azure_credentials['subscription_id']
 )
 
-network = Fog::Network::AzureRM.new(
+network = Fog::AzureRM::Network.new(
   tenant_id: azure_credentials['tenant_id'],
   client_id: azure_credentials['client_id'],
   client_secret: azure_credentials['client_secret'],

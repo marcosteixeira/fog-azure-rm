@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Deployment Model
 class TestDeployment < Minitest::Test
   def setup
-    @service = Fog::Resources::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Resources.new(credentials)
     client = @service.instance_variable_get(:@rmc)
     @deployment = deployment(@service)
     @response = ApiStub::Models::Resources::Deployment.create_deployment_response(client)
@@ -43,7 +43,7 @@ class TestDeployment < Minitest::Test
 
   def test_save_method_response
     @service.stub :create_deployment, @response do
-      assert_instance_of Fog::Resources::AzureRM::Deployment, @deployment.save
+      assert_instance_of Fog::AzureRM::Resources::Deployment, @deployment.save
     end
   end
 

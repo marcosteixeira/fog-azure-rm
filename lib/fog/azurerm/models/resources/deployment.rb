@@ -1,6 +1,6 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # This class is giving implementation of create/save and
       # delete/destroy for Deployment model.
       class Deployment < Fog::Model
@@ -30,14 +30,14 @@ module Fog
 
           hash['providers'] = []
           deployment.properties.providers.each do |provider|
-            provider_obj = Fog::Resources::AzureRM::Provider.new
-            hash['providers'] << provider_obj.merge_attributes(Fog::Resources::AzureRM::Provider.parse(provider))
+            provider_obj = Fog::AzureRM::Resources::Provider.new
+            hash['providers'] << provider_obj.merge_attributes(Fog::AzureRM::Resources::Provider.parse(provider))
           end
 
           hash['dependencies'] = []
           deployment.properties.dependencies.each do |dependency|
-            dependency_obj = Fog::Resources::AzureRM::Dependency.new
-            hash['dependencies'] << dependency_obj.merge_attributes(Fog::Resources::AzureRM::Dependency.parse(dependency))
+            dependency_obj = Fog::AzureRM::Resources::Dependency.new
+            hash['dependencies'] << dependency_obj.merge_attributes(Fog::AzureRM::Resources::Dependency.parse(dependency))
           end
 
           hash['template_link'] = deployment.properties.template_link.uri
@@ -53,7 +53,7 @@ module Fog
           requires :name, :resource_group, :template_link, :parameters_link
 
           deployment = service.create_deployment(resource_group, name, template_link, parameters_link)
-          merge_attributes(Fog::Resources::AzureRM::Deployment.parse(deployment))
+          merge_attributes(Fog::AzureRM::Resources::Deployment.parse(deployment))
         end
 
         def destroy

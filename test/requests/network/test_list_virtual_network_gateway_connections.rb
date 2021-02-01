@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for List Virtual Network Gateway Connections Request
 class TestListVirtualNetwrokGatewayConnections < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     @network_client = @service.instance_variable_get(:@network_client)
     @gateway_connections = @network_client.virtual_network_gateway_connections
   end

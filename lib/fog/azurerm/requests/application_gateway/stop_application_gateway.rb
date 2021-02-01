@@ -1,6 +1,6 @@
 module Fog
-  module ApplicationGateway
-    class AzureRM
+  module AzureRM
+    class ApplicationGateway
       class Real
         def stop_application_gateway(resource_group, name)
           msg = "Stopping Application Gateway #{name} in Resource Group #{resource_group}"

@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for ExpressRouteCircuitAuthorization Model
 class TestExpressRouteCircuitAuthorization < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     @circuit_authorization = express_route_circuit_authorization(@service)
     @network_client = @service.instance_variable_get(:@network_client)
   end
@@ -38,7 +38,7 @@ class TestExpressRouteCircuitAuthorization < Minitest::Test
   def test_save_method_response
     response = ApiStub::Models::Network::ExpressRouteCircuitAuthorization.create_express_route_circuit_authorization_response(@network_client)
     @service.stub :create_or_update_express_route_circuit_authorization, response do
-      assert_instance_of Fog::Network::AzureRM::ExpressRouteCircuitAuthorization, @circuit_authorization.save
+      assert_instance_of Fog::AzureRM::Network::ExpressRouteCircuitAuthorization, @circuit_authorization.save
     end
   end
 

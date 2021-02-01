@@ -1,6 +1,6 @@
 module Fog
-  module Compute
-    class AzureRM
+  module AzureRM
+    class Compute
       # This class provides the actual implementation for service calls.
       class Real
         def check_vm_extension_exists(resource_group_name, virtual_machine_name, vm_extension_name)

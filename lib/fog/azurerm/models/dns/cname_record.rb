@@ -1,6 +1,6 @@
 module Fog
-  module DNS
-    class AzureRM
+  module AzureRM
+    class DNS
       # This class is giving an implementation of 'CNAME' RecordSet type
       class CnameRecord < Fog::Model
         attribute :cname

@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for ExpressRouteCircuitPeering Model
 class TestExpressRouteCircuitPeering < Minitest::Test
   def setup
-    @service = Fog::Network::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Network.new(credentials)
     @circuit_peering = express_route_circuit_peering(@service)
     @network_client = @service.instance_variable_get(:@network_client)
   end
@@ -41,7 +41,7 @@ class TestExpressRouteCircuitPeering < Minitest::Test
   def test_save_method_response
     response = ApiStub::Models::Network::ExpressRouteCircuitPeering.create_express_route_circuit_peering_response(@network_client)
     @service.stub :create_or_update_express_route_circuit_peering, response do
-      assert_instance_of Fog::Network::AzureRM::ExpressRouteCircuitPeering, @circuit_peering.save
+      assert_instance_of Fog::AzureRM::Network::ExpressRouteCircuitPeering, @circuit_peering.save
     end
   end
 

@@ -1,6 +1,6 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # This class is giving implementation of create/save and
       # delete/destroy for resources.
       class AzureResource < Fog::Model

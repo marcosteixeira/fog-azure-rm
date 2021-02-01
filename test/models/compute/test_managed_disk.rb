@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Managed Disk Model
 class TestManagedDisk < Minitest::Test
   def setup
-    @service = Fog::Compute::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Compute.new(credentials)
     @managed_disk = managed_disk(@service)
     compute_client = @service.instance_variable_get(:@compute_mgmt_client)
     @response = ApiStub::Models::Compute::ManagedDisk.create_managed_disk_response(compute_client)
@@ -44,7 +44,7 @@ class TestManagedDisk < Minitest::Test
 
   def test_save_method_response
     @service.stub :create_or_update_managed_disk, @response do
-      assert_instance_of Fog::Compute::AzureRM::ManagedDisk, @managed_disk.save
+      assert_instance_of Fog::AzureRM::Compute::ManagedDisk, @managed_disk.save
     end
   end
 

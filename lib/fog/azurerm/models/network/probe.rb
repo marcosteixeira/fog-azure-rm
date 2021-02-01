@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Probe model for Network Service
       class Probe < Fog::Model
         identity :name

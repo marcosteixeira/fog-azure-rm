@@ -1,6 +1,6 @@
 module Fog
-  module Sql
-    class AzureRM
+  module AzureRM
+    class Sql
       # Sql Database model for Database Service
       class SqlDatabase < Fog::Model
         identity :name
@@ -35,7 +35,7 @@ module Fog
         def save
           requires :resource_group, :server_name, :name, :location
           sql_database = service.create_or_update_database(format_database_params)
-          merge_attributes(Fog::Sql::AzureRM::SqlDatabase.parse(sql_database))
+          merge_attributes(Fog::AzureRM::Sql::SqlDatabase.parse(sql_database))
         end
 
         def destroy

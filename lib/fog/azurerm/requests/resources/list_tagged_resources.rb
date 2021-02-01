@@ -1,6 +1,6 @@
 module Fog
-  module Resources
-    class AzureRM
+  module AzureRM
+    class Resources
       # This class provides the actual implementation for service calls.
       class Real
         def list_tagged_resources(tag_name, tag_value = nil)

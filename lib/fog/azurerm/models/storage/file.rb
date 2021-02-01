@@ -1,8 +1,8 @@
 require 'mime/types'
 
 module Fog
-  module Storage
-    class AzureRM
+  module AzureRM
+    class Storage
       # This class is giving implementation of create/save and
       # delete/destroy for Blob.
       class File < Fog::Model
@@ -147,7 +147,7 @@ module Fog
         # @param options              [Hash] options for copy_object method
         # @option options [Integer] timeout Sets to raise a TimeoutError if the copy does not finish in timeout seconds.
         #
-        # @return [Fog::Storage::AzureRM::File] New File.
+        # @return [Fog::AzureRM::Storage::File] New File.
         #
         def copy(target_directory_key, target_file_key, options = {})
           requires :directory, :key

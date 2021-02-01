@@ -1,6 +1,6 @@
 module Fog
-  module TrafficManager
-    class AzureRM
+  module AzureRM
+    class TrafficManager
       # Real class for TrafficManager Request
       class Real
         def delete_traffic_manager_profile(resource_group, name)

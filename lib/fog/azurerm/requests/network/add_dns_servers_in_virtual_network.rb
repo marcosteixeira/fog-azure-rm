@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Network Request
       class Real
         def add_dns_servers_in_virtual_network(resource_group_name, virtual_network_name, dns_servers)

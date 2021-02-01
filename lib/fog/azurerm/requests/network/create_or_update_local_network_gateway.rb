@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Real class for Local Network Gateway Request
       class Real
         def create_or_update_local_network_gateway(local_network_gateway_params)

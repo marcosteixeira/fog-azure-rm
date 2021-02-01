@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Delete Vault Request
 class TestDeleteVault < Minitest::Test
   def setup
-    @service = Fog::KeyVault::AzureRM.new(credentials)
+    @service = Fog::AzureRM::KeyVault.new(credentials)
     key_vault_client = @service.instance_variable_get(:@key_vault_client)
     @vaults = key_vault_client.vaults
   end

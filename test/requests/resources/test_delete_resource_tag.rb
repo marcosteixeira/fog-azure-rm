@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Delete Resource Tag Request
 class TestDeleteResourceTag < Minitest::Test
   def setup
-    @service = Fog::Resources::AzureRM.new(credentials)
+    @service = Fog::AzureRM::Resources.new(credentials)
     @client = @service.instance_variable_get(:@rmc)
     @resources = @client.resources
     @resource_response = ApiStub::Requests::Resources::AzureResource.azure_resource_response(@client)

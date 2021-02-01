@@ -1,6 +1,6 @@
 module Fog
-  module Network
-    class AzureRM
+  module AzureRM
+    class Network
       # Network Security Group model for Network Service
       class NetworkSecurityGroup < Fog::Model
         identity :name
@@ -26,13 +26,13 @@ module Fog
           hash['tags'] = nsg.tags
 
           nsg.security_rules.each do |sr|
-            security_rule = Fog::Network::AzureRM::NetworkSecurityRule.new
-            hash['security_rules'] << security_rule.merge_attributes(Fog::Network::AzureRM::NetworkSecurityRule.parse(sr))
+            security_rule = Fog::AzureRM::Network::NetworkSecurityRule.new
+            hash['security_rules'] << security_rule.merge_attributes(Fog::AzureRM::Network::NetworkSecurityRule.parse(sr))
           end unless nsg.security_rules.nil?
 
           nsg.default_security_rules.each do |dsr|
-            security_rule = Fog::Network::AzureRM::NetworkSecurityRule.new
-            hash['default_security_rules'] << security_rule.merge_attributes(Fog::Network::AzureRM::NetworkSecurityRule.parse(dsr))
+            security_rule = Fog::AzureRM::Network::NetworkSecurityRule.new
+            hash['default_security_rules'] << security_rule.merge_attributes(Fog::AzureRM::Network::NetworkSecurityRule.parse(dsr))
           end
 
           hash
@@ -43,7 +43,7 @@ module Fog
 
           validate_security_rules(security_rules) unless security_rules.nil?
           nsg = service.create_or_update_network_security_group(resource_group, name, location, security_rules, tags)
-          merge_attributes(Fog::Network::AzureRM::NetworkSecurityGroup.parse(nsg))
+          merge_attributes(Fog::AzureRM::Network::NetworkSecurityGroup.parse(nsg))
         end
 
         def destroy
@@ -57,7 +57,7 @@ module Fog
             validate_security_rules(security_rule_hash[:security_rules])
             merge_attributes(security_rule_hash)
             nsg = service.create_or_update_network_security_group(resource_group, name, location, security_rules, tags)
-            return merge_attributes(Fog::Network::AzureRM::NetworkSecurityGroup.parse(nsg))
+            return merge_attributes(Fog::AzureRM::Network::NetworkSecurityGroup.parse(nsg))
           end
           raise 'Invalid hash key.'
         end
@@ -65,12 +65,12 @@ module Fog
         def add_security_rules(security_rules)
           validate_security_rules(security_rules)
           nsg = service.add_security_rules(resource_group, name, security_rules)
-          merge_attributes(Fog::Network::AzureRM::NetworkSecurityGroup.parse(nsg))
+          merge_attributes(Fog::AzureRM::Network::NetworkSecurityGroup.parse(nsg))
         end
 
         def remove_security_rule(security_rule_name)
           nsg = service.remove_security_rule(resource_group, name, security_rule_name)
-          merge_attributes(Fog::Network::AzureRM::NetworkSecurityGroup.parse(nsg))
+          merge_attributes(Fog::AzureRM::Network::NetworkSecurityGroup.parse(nsg))
         end
 
         private

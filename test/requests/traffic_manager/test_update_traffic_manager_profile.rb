@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Update Traffic Manager Profile
 class TestUpdateTrafficManagerProfile < Minitest::Test
   def setup
-    @service = Fog::TrafficManager::AzureRM.new(credentials)
+    @service = Fog::AzureRM::TrafficManager.new(credentials)
     @traffic_manager_client = @service.instance_variable_get(:@traffic_mgmt_client)
     @profiles = @traffic_manager_client.profiles
     @mocked_response = ApiStub::Requests::TrafficManager::TrafficManagerProfile.create_traffic_manager_profile_response(@traffic_manager_client)

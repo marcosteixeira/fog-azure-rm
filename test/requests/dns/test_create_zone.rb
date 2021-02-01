@@ -3,7 +3,7 @@ require File.expand_path '../../test_helper', __dir__
 # Test class for Create Zone Request
 class TestCreateZone < Minitest::Test
   def setup
-    @service = Fog::DNS::AzureRM.new(credentials)
+    @service = Fog::AzureRM::DNS.new(credentials)
     @dns_client = @service.instance_variable_get(:@dns_client)
     @zones = @dns_client.zones
   end
